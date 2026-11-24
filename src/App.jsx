@@ -47,7 +47,9 @@ const CONTACT = {
   bkashNumber: '01511808472',
   whatsappNumber: '01737808472',
   whatsappLink:
-    'https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%A6%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4',
+    'https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%A6%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4',
+  whatsappBundleLink:
+    'https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AE%E0%A7%87%E0%A6%97%E0%A6%BE%20%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B2%20%E0%A6%85%E0%A6%AB%E0%A6%BE%E0%A6%B0%20(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%20%2B%20%E0%A7%A9%E0%A6%A1%E0%A6%BF%20%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1)%20%E0%A6%8F%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%AB%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4',
 };
 
 const STORIES = [
@@ -397,6 +399,10 @@ const FLASHCARDS = [
 
 const FAQS = [
   {
+    q: 'ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড কি আলাদাভাবে কেনা যাবে?',
+    a: 'না, ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না। তবে মাত্র ১৫০৳-এর মেগা বান্ডেল অফারে (নিয়মিত মূল্য ৩০০৳) প্রো ইবুকের ডে ও নাইট দুটি ৩৫৭ পৃষ্ঠার ইলাস্ট্রেটেড PDF-এর সাথেই ১,৮৭৭ শব্দের ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (অফলাইন UK/US অডিওসহ) ও Anki ডেক একসাথে পাবেন।',
+  },
+  {
     q: 'ইবুকটি অর্ডার করার পর কীভাবে এবং কখন হাতে পাব?',
     a: 'আমাদের বিকাশ নম্বরে (01511808472) ১০০৳ পাঠিয়ে ট্রানজেকশন আইডি বা স্ক্রিনশট হোয়াটসঅ্যাপে পাঠানোর সাথে সাথেই আপনাকে ৩০৪ পৃষ্ঠার হাই-কোয়ালিটি PDF ইবুকটি পাঠিয়ে দেওয়া হবে।',
   },
@@ -437,6 +443,7 @@ export default function App() {
 
   // Manual bKash Order Modal state
   const [orderModalOpen, setOrderModalOpen] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('bundle'); // 'ebook' | 'bundle'
   const [copiedField, setCopiedField] = useState(''); // 'bkash' | 'whatsapp' | ''
 
   const currentStory = STORIES[activeStoryIdx];
@@ -504,7 +511,8 @@ export default function App() {
     }
   };
 
-  const openOrderModal = () => {
+  const openOrderModal = (plan = 'ebook') => {
+    setSelectedPlan(plan === 'bundle' ? 'bundle' : 'ebook');
     setCopiedField('');
     setOrderModalOpen(true);
     setMobileMenuOpen(false);
@@ -707,9 +715,9 @@ export default function App() {
               {/* Micro Trust Points */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 {[
-                  { icon: Download, text: 'হোয়াটসঅ্যাপে ইনস্ট্যান্ট PDF' },
-                  { icon: Eye, text: 'চোখের আরামের লাইট থিম' },
-                  { icon: ShieldCheck, text: '১০০% জিরো-ওভারল্যাপ নতুন শব্দ' },
+                  { icon: Download, text: 'ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF' },
+                  { icon: Eye, text: '১০০টি গল্পে জিবলি-স্টাইল ছবি' },
+                  { icon: ShieldCheck, text: 'বান্ডেলে ১,৮৭৭ শব্দের ৩ডি ফ্ল্যাশকার্ড' },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -1468,8 +1476,7 @@ export default function App() {
       {/* 50% DISCOUNT PRICING SECTION (২০০৳ -> ১০০৳, bKash ONLY) */}
       <section id="pricing" className="py-16 sm:py-24">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-[32px] bg-gradient-to-br from-[#5B21B6] via-[#7C3AED] to-[#A855F7] text-white p-7 sm:p-12 shadow-2xl shadow-purple-700/25 overflow-hidden">
-            {/* Soft Gold & Pink Glows */}
+          <div className="relative rounded-[32px] bg-gradient-to-br from-[#5B21B6] via-[#7C3AED] to-[#A855F7] text-white p-6 sm:p-11 shadow-2xl shadow-purple-700/25 overflow-hidden">
             <div
               className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full opacity-30 blur-3xl"
               style={{ backgroundColor: '#FDE047' }}
@@ -1479,91 +1486,142 @@ export default function App() {
               style={{ backgroundColor: '#F472B6' }}
             />
 
-            <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-7 space-y-5">
-                <span className="inline-flex items-center gap-1.5 bg-[#FDE047] text-[#2E1065] font-extrabold text-xs sm:text-sm px-4 py-1.5 rounded-full shadow">
-                  <Flame className="w-4 h-4 text-[#C026D3]" />
-                  সীমিত সময়ের জন্য ৫০% ডিসকাউন্ট!
-                </span>
-                <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight">
-                  আজই সংগ্রহ করুন{' '}
-                  <span className="text-[#FEF08A]">গল্পে শিখি Vocabulary!</span>{' '}
-                  সম্পূর্ণ ১০০ গল্পের সংস্করণ
-                </h2>
-                <p className="text-sm sm:text-base text-white/90 leading-relaxed">
-                  একটি মাত্র ইবুকেই পাচ্ছেন GRE, GMAT ও SAT-এর সবচেয়ে গুরুত্বপূর্ণ ২,০০০+ শব্দ, ৫৯৬+ মেমোরি হ্যাক এবং চোখের আরামের ৩০৪ পৃষ্ঠার প্রিমিয়াম PDF—২০০৳-এর বদলে এখন মাত্র <strong className="text-[#FEF08A]">১০০৳-এ</strong>!
-                </p>
+            <div className="relative text-center max-w-2xl mx-auto mb-8 space-y-3">
+              <span className="inline-flex items-center gap-1.5 bg-[#FDE047] text-[#2E1065] font-extrabold text-xs sm:text-sm px-4 py-1.5 rounded-full shadow">
+                <Flame className="w-4 h-4 text-[#C026D3]" />
+                সীমিত সময়ের জন্য ৫০% ডিসকাউন্ট ও মেগা বান্ডেল অফার!
+              </span>
+              <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight">
+                পছন্দের প্যাক বেছে নিন —{' '}
+                <span className="text-[#FEF08A]">গল্পে শিখি Vocabulary! প্রো</span>
+              </h2>
+              <p className="text-sm sm:text-base text-white/90">
+                প্রতিটি গল্পে জিবলি-স্টাইল ছবি, ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF, ৪,১৬৬+ UK/US অডিও লিংক এবং বান্ডেলে পাচ্ছেন ১,৮৭৭ শব্দের ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড!
+              </p>
+            </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  {[
-                    '১০০টি সম্পূর্ণ বাংলা গল্প (১–১০০)',
-                    '২,০০০+ হাই-ফ্রিকোয়েন্সি শব্দ',
-                    '৫৯৬+ মেমোরি হ্যাক ও কন্টেক্সট চেক',
-                    '৩০৪ পৃষ্ঠার আই-ফ্রেন্ডলি PDF',
-                    'হোয়াটসঅ্যাপে ইনস্ট্যান্ট ডেলিভারি',
-                    'মোবাইল, ট্যাব ও ল্যাপটপ ফ্রেন্ডলি',
-                  ].map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2 text-sm font-medium text-white/95">
-                      <CheckCircle2 className="w-4 h-4 text-[#FEF08A] shrink-0" />
-                      <span>{feat}</span>
+            <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+              <div className="bg-white/95 text-[#1F1B2E] rounded-3xl p-6 sm:p-7 shadow-xl border border-white/60 flex flex-col justify-between">
+                <div>
+                  <div className="pb-4 border-b border-[#F3EEFF]">
+                    <span className="inline-block text-[11px] font-extrabold text-[#7C3AED] bg-[#F3E8FF] px-3 py-1 rounded-full mb-1.5">
+                      স্ট্যান্ডার্ড প্রো প্যাক • ৫০% ছাড়
+                    </span>
+                    <h3 className="text-lg font-extrabold text-[#2E1065]">
+                      ভোকাবুলারি প্রো ইবুক (ডে + নাইট)
+                    </h3>
+                  </div>
+
+                  <div className="my-5 text-center bg-[#FAF8FF] rounded-2xl p-4 border border-[#E7DEFF]">
+                    <div className="flex items-baseline justify-center gap-3">
+                      <span className="text-lg font-bold text-[#8B7FA8] line-through">২০০৳</span>
+                      <span className="text-4xl sm:text-5xl font-black text-[#6D28D9] tracking-tight">১০০৳</span>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Offer Box */}
-              <div className="lg:col-span-5 bg-white text-[#1F1B2E] rounded-3xl p-6 sm:p-7 shadow-xl border-2 border-[#FDE047]">
-                <div className="flex items-center gap-3 pb-4 border-b border-[#F3EEFF]">
-                  <img
-                    src={MEDIA.logo}
-                    alt="Vocab Hero Badge"
-                    className="w-12 h-12 rounded-xl object-cover ring-2 ring-[#A855F7]"
-                  />
-                  <div>
-                    <p className="text-sm font-extrabold text-[#2E1065]">
-                      সম্পূর্ণ ১০০ গল্পের ইবুক
-                    </p>
-                    <p className="text-xs font-semibold text-[#7C3AED]">
-                      লঞ্চিং অফার • সরাসরি ৫০% ছাড়
+                    <p className="text-xs font-semibold text-[#6B5B95] mt-1">
+                      একবার পেমেন্টে লাইফটাইম PDF অ্যাক্সেস
                     </p>
                   </div>
-                </div>
 
-                <div className="my-5 text-center bg-gradient-to-br from-[#FAF8FF] to-[#F3E8FF] rounded-2xl p-5 border border-[#DDD6FE]">
-                  <span className="inline-block text-xs font-extrabold text-[#7C3AED] bg-white px-3 py-1 rounded-full mb-2 border border-[#DDD6FE]">
-                    ৫০% ডিসকাউন্ট অ্যাক্টিভ
-                  </span>
-                  <div className="flex items-baseline justify-center gap-3">
-                    <span className="text-xl font-bold text-[#8B7FA8] line-through">
-                      ২০০৳
-                    </span>
-                    <span className="text-5xl font-black bg-gradient-to-r from-[#6D28D9] to-[#C026D3] bg-clip-text text-transparent tracking-tight">
-                      ১০০৳
-                    </span>
-                  </div>
-                  <p className="text-xs font-semibold text-[#6B5B95] mt-1.5">
-                    একবার পেমেন্টে লাইফটাইম PDF অ্যাক্সেস
-                  </p>
+                  <ul className="space-y-2.5 text-sm font-medium text-[#3B2F5C] mb-6">
+                    {[
+                      '১০০টি সম্পূর্ণ গল্প + ১০০টি জিবলি-স্টাইল ছবি',
+                      'ডে (লাইট) + নাইট (ডার্ক) দুটি ৩৫৭ পৃষ্ঠার PDF',
+                      '৪,১৬৬+ ক্লিকেবল UK ও US অডিও লিংক',
+                      '১০টি কুইজ, ৫০ কনফিউজিং ওয়ার্ড ও ৩০ রুট ম্যাপ',
+                      '৩০ দিনের রোডম্যাপ, টপিক ক্লাস্টার ও A–Z ইনডেক্স',
+                    ].map((feat, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
                 <button
-                  onClick={openOrderModal}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C026D3] hover:brightness-110 text-white font-extrabold text-base px-6 py-4 rounded-2xl shadow-lg shadow-purple-500/30 transition-all hover:-translate-y-0.5"
+                  type="button"
+                  onClick={() => openOrderModal('ebook')}
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#EDE9FE] hover:bg-[#DDD6FE] text-[#4C1D95] font-extrabold text-base px-6 py-3.5 rounded-2xl transition-all"
                 >
-                  <Sparkles className="w-5 h-5 text-[#FDE047]" />
-                  বিকাশে অর্ডার করুন — ১০০৳
-                  <ArrowRight className="w-5 h-5" />
+                  প্রো ইবুক নিন — ১০০৳
+                  <ArrowRight className="w-4 h-4" />
                 </button>
+              </div>
 
-                <div className="mt-4 flex items-center justify-center gap-4 text-[11px] font-bold text-[#6B5B95]">
-                  <span className="inline-flex items-center gap-1">
-                    <Smartphone className="w-3.5 h-3.5 text-[#E2136E]" />
-                    শুধুমাত্র bKash পেমেন্ট
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 text-[#059669]" />
-                    হোয়াটসঅ্যাপ ডেলিভারি
-                  </span>
+              <div className="relative bg-white text-[#1F1B2E] rounded-3xl p-6 sm:p-7 shadow-2xl border-[3px] border-[#FDE047] flex flex-col justify-between">
+                <div className="absolute -top-3.5 right-6 bg-gradient-to-r from-[#F59E0B] to-[#EC4899] text-white text-xs font-extrabold px-4 py-1 rounded-full shadow">
+                  🔥 সবচেয়ে জনপ্রিয় • মেগা বান্ডেল
+                </div>
+
+                <div>
+                  <div className="flex items-center gap-3 pb-4 border-b border-[#F3EEFF]">
+                    <img
+                      src={MEDIA.logo}
+                      alt="Vocab Hero Bundle"
+                      className="w-11 h-11 rounded-xl object-cover ring-2 ring-[#A855F7]"
+                    />
+                    <div>
+                      <span className="inline-block text-[11px] font-extrabold text-[#B45309] bg-[#FEF3C7] px-2.5 py-0.5 rounded-full mb-0.5">
+                        বান্ডেল অফার • ৫০% ছাড়
+                      </span>
+                      <h3 className="text-lg font-extrabold text-[#2E1065]">
+                        প্রো ইবুক + ৩ডি ফ্ল্যাশকার্ড বান্ডেল
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="my-5 text-center bg-gradient-to-br from-[#FAF8FF] to-[#FEF9C3]/60 rounded-2xl p-4 border border-[#FDE047]">
+                    <div className="flex items-baseline justify-center gap-3">
+                      <span className="text-xl font-bold text-[#8B7FA8] line-through">৩০০৳</span>
+                      <span className="text-5xl font-black bg-gradient-to-r from-[#6D28D9] to-[#C026D3] bg-clip-text text-transparent tracking-tight">
+                        ১৫০৳
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold text-[#6D28D9] mt-1">
+                      মাত্র ৫০৳ বাড়তিতে পাচ্ছেন ১,৮৭৭ শব্দের ৩ডি ফ্ল্যাশকার্ড!
+                    </p>
+                  </div>
+
+                  <ul className="space-y-2.5 text-sm font-semibold text-[#2E1065] mb-4">
+                    {[
+                      'প্রো ইবুকের সবকিছু (ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF)',
+                      'ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (১,৮৭৭ শব্দ)',
+                      'ফ্ল্যাশকার্ডে অফলাইন UK, US, ধীরে ও উদাহরণ অডিও',
+                      'নাইট মোড, গল্প ১–১০০ ফিল্টার ও মুখস্থ ট্র্যাকার',
+                      'বোনাস: Anki ফ্ল্যাশকার্ড ডেক ও অডিও সেটআপ গাইড',
+                    ].map((feat, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-[#059669] shrink-0 mt-0.5" />
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <p className="text-[11px] font-bold text-[#B45309] bg-[#FFFBEB] border border-[#FDE68A] rounded-xl px-3 py-2 mb-5">
+                    * বিঃদ্রঃ ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না — কেবল ১৫০৳-এর এই বান্ডেল অফারেই প্রো ইবুকের সাথে পাবেন।
+                  </p>
+                </div>
+
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => openOrderModal('bundle')}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C026D3] hover:brightness-110 text-white font-extrabold text-base px-6 py-4 rounded-2xl shadow-lg shadow-purple-500/30 transition-all hover:-translate-y-0.5"
+                  >
+                    <Sparkles className="w-5 h-5 text-[#FDE047]" />
+                    বান্ডেল অফার নিন — ১৫০৳
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  <div className="mt-3 flex items-center justify-center gap-4 text-[11px] font-bold text-[#6B5B95]">
+                    <span className="inline-flex items-center gap-1">
+                      <Smartphone className="w-3.5 h-3.5 text-[#E2136E]" />
+                      শুধুমাত্র bKash পেমেন্ট
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-[#059669]" />
+                      হোয়াটসঅ্যাপ ডেলিভারি
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1692,7 +1750,7 @@ export default function App() {
               />
               <div>
                 <span className="inline-flex items-center gap-1 text-[11px] font-extrabold bg-[#F3E8FF] text-[#7C3AED] px-2.5 py-0.5 rounded-full">
-                  ৫০% ডিসকাউন্ট • মাত্র ১০০৳
+                  {selectedPlan === 'bundle' ? 'মেগা বান্ডেল • ৫০% ছাড় (১৫০৳)' : '৫০% ডিসকাউন্ট • মাত্র ১০০৳'}
                 </span>
                 <h3 className="text-lg font-extrabold text-[#2E1065] mt-0.5">
                   বিকাশে অর্ডার সম্পন্ন করুন
@@ -1700,15 +1758,51 @@ export default function App() {
               </div>
             </div>
 
-            {/* Price Summary Pill */}
+            <div className="grid grid-cols-2 gap-2 mb-3">
+              <button
+                type="button"
+                onClick={() => setSelectedPlan('ebook')}
+                className={`py-2 px-3 rounded-xl text-xs font-extrabold border transition-all ${
+                  selectedPlan === 'ebook'
+                    ? 'bg-[#6D28D9] text-white border-[#6D28D9]'
+                    : 'bg-white text-[#4C1D95] border-[#DDD6FE]'
+                }`}
+              >
+                শুধু প্রো ইবুক (১০০৳)
+              </button>
+              <button
+                type="button"
+                onClick={() => setSelectedPlan('bundle')}
+                className={`py-2 px-3 rounded-xl text-xs font-extrabold border transition-all ${
+                  selectedPlan === 'bundle'
+                    ? 'bg-gradient-to-r from-[#7C3AED] to-[#C026D3] text-white border-[#A855F7]'
+                    : 'bg-white text-[#4C1D95] border-[#DDD6FE]'
+                }`}
+              >
+                🔥 ইবুক + ফ্ল্যাশকার্ড (১৫০৳)
+              </button>
+            </div>
+
             <div className="flex items-center justify-between bg-gradient-to-r from-[#F5F0FF] to-[#FDF2F8] border border-[#DDD6FE] rounded-2xl px-4 py-3 mb-4">
               <div>
-                <p className="text-xs font-bold text-[#6B5B95]">গল্পে শিখি Vocabulary! (PDF)</p>
-                <p className="text-[11px] text-[#7C3AED] font-semibold">১০০ গল্প • ২,০০০+ শব্দ • ৩০৪ পৃষ্ঠা</p>
+                <p className="text-xs font-bold text-[#6B5B95]">
+                  {selectedPlan === 'bundle'
+                    ? 'প্রো ইবুক (ডে+নাইট) + ৩ডি ফ্ল্যাশকার্ড বান্ডেল'
+                    : 'গল্পে শিখি Vocabulary! প্রো (ডে+নাইট PDF)'}
+                </p>
+                <p className="text-[11px] text-[#7C3AED] font-semibold">
+                  {selectedPlan === 'bundle'
+                    ? '৩৫৭ পৃষ্ঠার ২টি PDF + ১,৮৭৭ শব্দের ফ্ল্যাশকার্ড + Anki'
+                    : '১০০ গল্প • ১০০ জিবলি ছবি • ৩৫৭ পৃষ্ঠা'}
+                </p>
               </div>
               <div className="text-right">
-                <span className="text-xs text-[#8B7FA8] line-through block">২০০৳</span>
-                <span className="text-xl font-black text-[#6D28D9]">১০০৳</span>
+                <span className="text-xs text-[#8B7FA8] line-through block">
+                  {selectedPlan === 'bundle' ? '৩০০৳' : '২০০৳'}
+                </span>
+                <span className="text-xl font-black text-[#6D28D9]">
+                  {selectedPlan === 'bundle' ? '১৫০৳' : '১০০৳'}
+                </span>
               </div>
             </div>
 
@@ -1720,7 +1814,7 @@ export default function App() {
                   বিকাশ নম্বর (bKash Send Money)
                 </span>
                 <span className="text-[11px] font-extrabold bg-white text-[#BE185D] px-2 py-0.5 rounded-md border border-[#FBCFE8]">
-                  ১০০৳ পাঠান
+                  {selectedPlan === 'bundle' ? '১৫০৳ পাঠান' : '১০০৳ পাঠান'}
                 </span>
               </div>
 
@@ -1764,7 +1858,7 @@ export default function App() {
                   </span>
                   <span>
                     উপরের বিকাশ নম্বরটি কপি করে আপনার বিকাশ অ্যাপ থেকে{' '}
-                    <strong className="text-[#2E1065]">১০০৳ Send Money</strong> করুন।
+                    <strong className="text-[#2E1065]">{selectedPlan === 'bundle' ? '১৫০৳' : '১০০৳'} Send Money</strong> করুন।
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -1782,7 +1876,7 @@ export default function App() {
                   </span>
                   <span>
                     যাচাই করার সাথে সাথেই হোয়াটসঅ্যাপে আপনার{' '}
-                    <strong className="text-[#2E1065]">৩০৪ পৃষ্ঠার সম্পূর্ণ PDF ইবুকটি</strong> পাঠিয়ে দেওয়া হবে।
+                    <strong className="text-[#2E1065]">{selectedPlan === 'bundle' ? 'ডে + নাইট প্রো PDF ও ৩ডি ফ্ল্যাশকার্ড বান্ডেল' : '৩৫৭ পৃষ্ঠার ডে + নাইট প্রো PDF ইবুক'}</strong> পাঠিয়ে দেওয়া হবে।
                   </span>
                 </li>
               </ol>
@@ -1807,7 +1901,7 @@ export default function App() {
               </div>
 
               <a
-                href={CONTACT.whatsappLink}
+                href={selectedPlan === 'bundle' ? CONTACT.whatsappBundleLink : CONTACT.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#059669] to-[#10B981] hover:brightness-105 text-white font-extrabold text-sm py-3.5 px-4 rounded-xl shadow-md shadow-emerald-500/20 transition-all"
