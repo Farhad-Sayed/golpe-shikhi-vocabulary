@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   BookOpen,
   Sparkles,
@@ -33,308 +33,357 @@ import {
   MessageCircle,
   PlayCircle,
   Send,
-} from 'lucide-react';
+} from "lucide-react";
 
 const MEDIA = {
-  logo: './media/vocab_hero_logo.jpg',
-  hero: './media/vocab_hero_full.jpg',
-  preview: './media/vocab_story_preview.jpg',
-  promoVideo: './media/promo_video_web.mp4',
-  videoPoster: './media/promo_poster.jpg',
+  logo: "./media/vocab_hero_logo.jpg",
+  hero: "./media/vocab_hero_full.jpg",
+  preview: "./media/vocab_story_preview.jpg",
+  promoVideo: "./media/promo_video_web.mp4",
+  videoPoster: "./media/promo_poster.jpg",
 };
 
 const CONTACT = {
-  bkashNumber: '01511808472',
-  whatsappNumber: '01737808472',
+  bkashNumber: "01511808472",
+  whatsappNumber: "01737808472",
   whatsappLink:
-    'https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%A6%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4',
+    "https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%E0%A7%87%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%A6%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4",
   whatsappBundleLink:
-    'https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AE%E0%A7%87%E0%A6%97%E0%A6%BE%20%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B2%20%E0%A6%85%E0%A6%AB%E0%A6%BE%E0%A6%B0%20(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%20%2B%20%E0%A7%A9%E0%A6%A1%E0%A6%BF%20%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1)%20%E0%A6%8F%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%AB%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4',
+    "https://wa.me/8801737808472?text=%E0%A6%86%E0%A6%B8%E0%A6%B8%E0%A6%BE%E0%A6%B2%E0%A6%BE%E0%A6%AE%E0%A7%81%20%E0%A6%86%E0%A6%B2%E0%A6%BE%E0%A6%87%E0%A6%95%E0%A7%81%E0%A6%AE%2C%20%E0%A6%86%E0%A6%AE%E0%A6%BF%20%E2%80%9C%E0%A6%97%E0%A6%B2%E0%A7%8D%E0%A6%AA%E0%A7%87%20%E0%A6%B6%E0%A6%BF%E0%A6%96%E0%A6%BF%20Vocabulary!%E2%80%9D%20%E0%A6%AE%E0%A7%87%E0%A6%97%E0%A6%BE%20%E0%A6%AC%E0%A6%BE%E0%A6%A8%E0%A7%8D%E0%A6%A1%E0%A7%87%E0%A6%B2%20%E0%A6%85%E0%A6%AB%E0%A6%BE%E0%A6%B0%20(%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A7%8B%20%E0%A6%87%E0%A6%AC%E0%A7%81%E0%A6%95%20%2B%20%E0%A7%A9%E0%A6%A1%E0%A6%BF%20%E0%A6%AB%E0%A7%8D%E0%A6%B2%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%B6%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A7%8D%E0%A6%A1)%20%E0%A6%8F%E0%A6%B0%20%E0%A6%9C%E0%A6%A8%E0%A7%8D%E0%A6%AF%20%E0%A7%A7%E0%A7%AB%E0%A7%A6%E0%A7%B3%20%E0%A6%AC%E0%A6%BF%E0%A6%95%E0%A6%BE%E0%A6%B6%E0%A7%87%20%E0%A6%AA%E0%A6%BE%E0%A6%A0%E0%A6%BF%E0%A7%9F%E0%A7%87%E0%A6%9B%E0%A6%BF%E0%A5%A4%20%E0%A6%86%E0%A6%AE%E0%A6%BE%E0%A6%B0%20TrxID%20/%20%E0%A6%B8%E0%A7%8D%E0%A6%95%E0%A7%8D%E0%A6%B0%E0%A6%BF%E0%A6%A8%E0%A6%B6%E0%A6%9F%20%E0%A6%A6%E0%A6%BF%E0%A6%9A%E0%A7%8D%E0%A6%9B%E0%A6%BF%E0%A5%A4",
 };
 
 const STORIES = [
   {
-    id: 'story-1',
-    number: 'গল্প ১',
-    badge: 'ক্লাসিক সংস্করণ • পরিমার্জিত',
-    title: 'নতুন শহরের প্রথম ধাক্কা',
+    id: "story-1",
+    number: "গল্প ১",
+    badge: "ক্লাসিক সংস্করণ • পরিমার্জিত",
+    title: "নতুন শহরের প্রথম ধাক্কা",
     segments: [
-      { text: 'ঢাকায় আসার প্রথম দিনেই রাফি বুঝতে পারল শহরের চাপটা বেশ ' },
-      { word: 'INTENSE' },
-      { text: '। নতুন মেসে উঠে সে শুরুতে বেশ ' },
-      { word: 'RETICENT' },
-      { text: ' হয়ে থাকত—কারও সাথে আগ বাড়িয়ে কথা বলত না। চারপাশের মানুষের ব্যস্ততা আর ' },
-      { word: 'APATHY' },
-      { text: ' দেখে প্রথম দিকে তার মন কিছুটা দমে গিয়েছিল। কিন্তু রাফি জানত, শুধু বসে থাকলে পরিস্থিতি বদলাবে না; নিজের চেষ্টাতেই অবস্থা ' },
-      { word: 'AMELIORATE' },
-      { text: ' করতে হবে। একবার টিউশনির কাজে দেরি হওয়ায় অভিভাবকের কাছ থেকে মৃদু ' },
-      { word: 'CENSURE' },
-      { text: ' শুনতে হয়েছিল, আর সেই অভিজ্ঞতা তার জন্য বেশ ' },
-      { word: 'DIDACTIC' },
-      { text: ' হয়ে দাঁড়াল। সে বুঝে গেল, সাময়িক কষ্টগুলো ' },
-      { word: 'EPHEMERAL' },
-      { text: '—তাই ' },
-      { word: 'PRUDENT' },
-      { text: ' সিদ্ধান্ত নিয়ে খরচ কমাতে সে আরও ' },
-      { word: 'FRUGAL' },
-      { text: ' হলো এবং পড়াশোনায় নিজের ' },
-      { word: 'ACUMEN' },
-      { text: ' কাজে লাগাতে শুরু করল।' },
+      { text: "ঢাকায় আসার প্রথম দিনেই রাফি বুঝতে পারল শহরের চাপটা বেশ " },
+      { word: "INTENSE" },
+      { text: "। নতুন মেসে উঠে সে শুরুতে বেশ " },
+      { word: "RETICENT" },
+      {
+        text: " হয়ে থাকত—কারও সাথে আগ বাড়িয়ে কথা বলত না। চারপাশের মানুষের ব্যস্ততা আর ",
+      },
+      { word: "APATHY" },
+      {
+        text: " দেখে প্রথম দিকে তার মন কিছুটা দমে গিয়েছিল। কিন্তু রাফি জানত, শুধু বসে থাকলে পরিস্থিতি বদলাবে না; নিজের চেষ্টাতেই অবস্থা ",
+      },
+      { word: "AMELIORATE" },
+      {
+        text: " করতে হবে। একবার টিউশনির কাজে দেরি হওয়ায় অভিভাবকের কাছ থেকে মৃদু ",
+      },
+      { word: "CENSURE" },
+      { text: " শুনতে হয়েছিল, আর সেই অভিজ্ঞতা তার জন্য বেশ " },
+      { word: "DIDACTIC" },
+      { text: " হয়ে দাঁড়াল। সে বুঝে গেল, সাময়িক কষ্টগুলো " },
+      { word: "EPHEMERAL" },
+      { text: "—তাই " },
+      { word: "PRUDENT" },
+      { text: " সিদ্ধান্ত নিয়ে খরচ কমাতে সে আরও " },
+      { word: "FRUGAL" },
+      { text: " হলো এবং পড়াশোনায় নিজের " },
+      { word: "ACUMEN" },
+      { text: " কাজে লাগাতে শুরু করল।" },
     ],
     words: {
       INTENSE: {
-        word: 'INTENSE',
-        pos: 'Adjective',
-        bn: 'তীব্র, প্রচণ্ড, গভীর',
-        example: 'He felt an intense pressure to perform well on his first day.',
-        mnemonic: 'In + Tense — ভেতরে ভেতরে চরম টেনশন বা তীব্র অনুভূতি।',
-        synonyms: ['Fierce', 'Acute', 'Profound'],
-        antonyms: ['Mild', 'Weak'],
-        context: 'শহরের প্রথম দিনের প্রবল চাপ বোঝাতে ব্যবহৃত হয়েছে।',
+        word: "INTENSE",
+        pos: "Adjective",
+        bn: "তীব্র, প্রচণ্ড, গভীর",
+        example:
+          "He felt an intense pressure to perform well on his first day.",
+        mnemonic: "In + Tense — ভেতরে ভেতরে চরম টেনশন বা তীব্র অনুভূতি।",
+        synonyms: ["Fierce", "Acute", "Profound"],
+        antonyms: ["Mild", "Weak"],
+        context: "শহরের প্রথম দিনের প্রবল চাপ বোঝাতে ব্যবহৃত হয়েছে।",
       },
       RETICENT: {
-        word: 'RETICENT',
-        pos: 'Adjective',
-        bn: 'স্বল্পভাষী, সংযত, চুপচাপ',
-        example: 'She was reticent about her personal plans during the meeting.',
-        mnemonic: "Roti + Cent — 'রুটি' বা 'কথা' বলার জন্য এক পয়সাও খরচ করতে নারাজ!",
-        synonyms: ['Reserved', 'Taciturn', 'Quiet'],
-        antonyms: ['Talkative', 'Garrulous'],
-        context: 'নতুন পরিবেশে কম কথা বলার স্বভাব বোঝাতে বসেছে।',
+        word: "RETICENT",
+        pos: "Adjective",
+        bn: "স্বল্পভাষী, সংযত, চুপচাপ",
+        example:
+          "She was reticent about her personal plans during the meeting.",
+        mnemonic:
+          "Roti + Cent — 'রুটি' বা 'কথা' বলার জন্য এক পয়সাও খরচ করতে নারাজ!",
+        synonyms: ["Reserved", "Taciturn", "Quiet"],
+        antonyms: ["Talkative", "Garrulous"],
+        context: "নতুন পরিবেশে কম কথা বলার স্বভাব বোঝাতে বসেছে।",
       },
       APATHY: {
-        word: 'APATHY',
-        pos: 'Noun',
-        bn: 'উদাসীনতা, অনাগ্রহ',
-        example: 'Voter apathy led to a very low turnout in the local election.',
-        mnemonic: 'A (না) + Pathy (অনুভূতি) — কোনো অনুভূতি বা আগ্রহ না থাকা।',
-        synonyms: ['Indifference', 'Lethargy', 'Detachment'],
-        antonyms: ['Enthusiasm', 'Passion'],
-        context: 'ব্যস্ত শহরের মানুষের অনাগ্রহ ও উদাসীনতা বোঝাচ্ছে।',
+        word: "APATHY",
+        pos: "Noun",
+        bn: "উদাসীনতা, অনাগ্রহ",
+        example:
+          "Voter apathy led to a very low turnout in the local election.",
+        mnemonic: "A (না) + Pathy (অনুভূতি) — কোনো অনুভূতি বা আগ্রহ না থাকা।",
+        synonyms: ["Indifference", "Lethargy", "Detachment"],
+        antonyms: ["Enthusiasm", "Passion"],
+        context: "ব্যস্ত শহরের মানুষের অনাগ্রহ ও উদাসীনতা বোঝাচ্ছে।",
       },
       AMELIORATE: {
-        word: 'AMELIORATE',
-        pos: 'Verb',
-        bn: 'উন্নতি করা, অবস্থার লাঘব করা',
-        example: 'New policies were introduced to ameliorate working conditions.',
-        mnemonic: "Ameli + Orate — 'আমেলি' নামের মেয়েটি দারুণ বক্তৃতা দিয়ে পরিস্থিতির উন্নতি করে।",
-        synonyms: ['Improve', 'Mitigate', 'Alleviate'],
-        antonyms: ['Worsen', 'Aggravate'],
-        context: 'খারাপ পরিস্থিতি থেকে ভালো অবস্থায় নেওয়ার অর্থে ব্যবহৃত।',
+        word: "AMELIORATE",
+        pos: "Verb",
+        bn: "উন্নতি করা, অবস্থার লাঘব করা",
+        example:
+          "New policies were introduced to ameliorate working conditions.",
+        mnemonic:
+          "Ameli + Orate — 'আমেলি' নামের মেয়েটি দারুণ বক্তৃতা দিয়ে পরিস্থিতির উন্নতি করে।",
+        synonyms: ["Improve", "Mitigate", "Alleviate"],
+        antonyms: ["Worsen", "Aggravate"],
+        context: "খারাপ পরিস্থিতি থেকে ভালো অবস্থায় নেওয়ার অর্থে ব্যবহৃত।",
       },
       CENSURE: {
-        word: 'CENSURE',
-        pos: 'Noun / Verb',
-        bn: 'তিরস্কার, কঠোর নিন্দা করা',
-        example: 'The committee issued a formal censure against the careless official.',
-        mnemonic: 'Sen + Sure — সেন্সর বোর্ড কোনো খারাপ দৃশ্য দেখলেই নিশ্চিত তিরস্কার করে।',
-        synonyms: ['Reprimand', 'Condemn', 'Rebuke'],
-        antonyms: ['Praise', 'Commend'],
-        context: 'দেরি করার কারণে অভিভাবকের ভর্ৎসনা বোঝাতে বসেছে।',
+        word: "CENSURE",
+        pos: "Noun / Verb",
+        bn: "তিরস্কার, কঠোর নিন্দা করা",
+        example:
+          "The committee issued a formal censure against the careless official.",
+        mnemonic:
+          "Sen + Sure — সেন্সর বোর্ড কোনো খারাপ দৃশ্য দেখলেই নিশ্চিত তিরস্কার করে।",
+        synonyms: ["Reprimand", "Condemn", "Rebuke"],
+        antonyms: ["Praise", "Commend"],
+        context: "দেরি করার কারণে অভিভাবকের ভর্ৎসনা বোঝাতে বসেছে।",
       },
       DIDACTIC: {
-        word: 'DIDACTIC',
-        pos: 'Adjective',
-        bn: 'শিক্ষামূলক, উপদেশমূলক',
-        example: 'The fable had a clear didactic purpose for young readers.',
-        mnemonic: 'Did + Act + Teach — যে কাজ বা অভিজ্ঞতা থেকে সরাসরি শিক্ষা পাওয়া যায়।',
-        synonyms: ['Instructive', 'Educational', 'Moralizing'],
-        antonyms: ['Uninformative', 'Purely entertaining'],
-        context: 'ভুল থেকে পাওয়া বাস্তব শিক্ষাকে নির্দেশ করছে।',
+        word: "DIDACTIC",
+        pos: "Adjective",
+        bn: "শিক্ষামূলক, উপদেশমূলক",
+        example: "The fable had a clear didactic purpose for young readers.",
+        mnemonic:
+          "Did + Act + Teach — যে কাজ বা অভিজ্ঞতা থেকে সরাসরি শিক্ষা পাওয়া যায়।",
+        synonyms: ["Instructive", "Educational", "Moralizing"],
+        antonyms: ["Uninformative", "Purely entertaining"],
+        context: "ভুল থেকে পাওয়া বাস্তব শিক্ষাকে নির্দেশ করছে।",
       },
       EPHEMERAL: {
-        word: 'EPHEMERAL',
-        pos: 'Adjective',
-        bn: 'ক্ষণস্থায়ী, স্বল্পকালের',
-        example: 'Social media trends are often ephemeral and fade within days.',
-        mnemonic: 'E + Funeral — আজ আছে তো কাল নেই, একেবারেই ক্ষণস্থায়ী।',
-        synonyms: ['Transient', 'Fleeting', 'Short-lived'],
-        antonyms: ['Permanent', 'Enduring'],
-        context: 'শুরুর কষ্ট যে চিরস্থায়ী নয়, তা বোঝাতে ব্যবহৃত।',
+        word: "EPHEMERAL",
+        pos: "Adjective",
+        bn: "ক্ষণস্থায়ী, স্বল্পকালের",
+        example:
+          "Social media trends are often ephemeral and fade within days.",
+        mnemonic: "E + Funeral — আজ আছে তো কাল নেই, একেবারেই ক্ষণস্থায়ী।",
+        synonyms: ["Transient", "Fleeting", "Short-lived"],
+        antonyms: ["Permanent", "Enduring"],
+        context: "শুরুর কষ্ট যে চিরস্থায়ী নয়, তা বোঝাতে ব্যবহৃত।",
       },
       PRUDENT: {
-        word: 'PRUDENT',
-        pos: 'Adjective',
-        bn: 'বিচক্ষণ, দূরদর্শী, সতর্ক',
-        example: 'It is prudent to save a portion of your income for emergencies.',
-        mnemonic: 'Pro + Student — একজন চৌকস ছাত্র সবসময় বিচক্ষণ সিদ্ধান্ত নেয়।',
-        synonyms: ['Wise', 'Judicious', 'Sensible'],
-        antonyms: ['Reckless', 'Imprudent'],
-        context: 'ভবিষ্যৎ ভেবে বুদ্ধিমানের মতো পদক্ষেপ নেওয়া বোঝাচ্ছে।',
+        word: "PRUDENT",
+        pos: "Adjective",
+        bn: "বিচক্ষণ, দূরদর্শী, সতর্ক",
+        example:
+          "It is prudent to save a portion of your income for emergencies.",
+        mnemonic:
+          "Pro + Student — একজন চৌকস ছাত্র সবসময় বিচক্ষণ সিদ্ধান্ত নেয়।",
+        synonyms: ["Wise", "Judicious", "Sensible"],
+        antonyms: ["Reckless", "Imprudent"],
+        context: "ভবিষ্যৎ ভেবে বুদ্ধিমানের মতো পদক্ষেপ নেওয়া বোঝাচ্ছে।",
       },
       FRUGAL: {
-        word: 'FRUGAL',
-        pos: 'Adjective',
-        bn: 'মিতব্যয়ী, হিসাবি',
-        example: 'Living a frugal lifestyle helped her pay off her student loans early.',
-        mnemonic: 'Free + Gal — অযথা খরচ না করে হিসাব করে চলা।',
-        synonyms: ['Thrifty', 'Economical', 'Sparing'],
-        antonyms: ['Extravagant', 'Prodigal'],
-        context: 'অপ্রয়োজনীয় খরচ কমিয়ে চলার অভ্যাস বোঝাতে বসেছে।',
+        word: "FRUGAL",
+        pos: "Adjective",
+        bn: "মিতব্যয়ী, হিসাবি",
+        example:
+          "Living a frugal lifestyle helped her pay off her student loans early.",
+        mnemonic: "Free + Gal — অযথা খরচ না করে হিসাব করে চলা।",
+        synonyms: ["Thrifty", "Economical", "Sparing"],
+        antonyms: ["Extravagant", "Prodigal"],
+        context: "অপ্রয়োজনীয় খরচ কমিয়ে চলার অভ্যাস বোঝাতে বসেছে।",
       },
       ACUMEN: {
-        word: 'ACUMEN',
-        pos: 'Noun',
-        bn: 'তীক্ষ্ণ বুদ্ধি, বিচক্ষণতা',
-        example: 'Her business acumen turned the struggling startup into a leader.',
-        mnemonic: 'Acute (তীক্ষ্ণ) + Men — তীক্ষ্ণ বুদ্ধি ও দ্রুত সিদ্ধান্ত নেওয়ার ক্ষমতা।',
-        synonyms: ['Astuteness', 'Shrewdness', 'Insight'],
-        antonyms: ['Naivety', 'Obtuseness'],
-        context: 'পড়াশোনায় ও সিদ্ধান্তে তীক্ষ্ণ বুদ্ধির প্রয়োগ বোঝাচ্ছে।',
+        word: "ACUMEN",
+        pos: "Noun",
+        bn: "তীক্ষ্ণ বুদ্ধি, বিচক্ষণতা",
+        example:
+          "Her business acumen turned the struggling startup into a leader.",
+        mnemonic:
+          "Acute (তীক্ষ্ণ) + Men — তীক্ষ্ণ বুদ্ধি ও দ্রুত সিদ্ধান্ত নেওয়ার ক্ষমতা।",
+        synonyms: ["Astuteness", "Shrewdness", "Insight"],
+        antonyms: ["Naivety", "Obtuseness"],
+        context: "পড়াশোনায় ও সিদ্ধান্তে তীক্ষ্ণ বুদ্ধির প্রয়োগ বোঝাচ্ছে।",
       },
     },
   },
   {
-    id: 'story-2',
-    number: 'গল্প ২',
-    badge: 'ক্লাসিক সংস্করণ • পরিমার্জিত',
-    title: 'পুরোনো লাইব্রেরির রহস্য',
+    id: "story-2",
+    number: "গল্প ২",
+    badge: "ক্লাসিক সংস্করণ • পরিমার্জিত",
+    title: "পুরোনো লাইব্রেরির রহস্য",
     segments: [
-      { text: 'বিশ্ববিদ্যালয়ের পুরোনো আর্কাইভে ঢুকে তানিয়া দেখল, তাকগুলো বেশ ' },
-      { word: 'ANTIQUATED' },
-      { text: ' এবং সেখানে এমন কিছু ' },
-      { word: 'ESOTERIC' },
-      { text: ' বই রাখা আছে যা কেবল হাতেগোনা কয়েকজন গবেষকই বোঝেন। সে প্রতিটি পাতা গভীরভাবে ' },
-      { word: 'SCRUTINIZE' },
-      { text: ' করতে লাগল। এক জায়গায় সে পড়ল এক ' },
-      { word: 'PRODIGAL' },
-      { text: ' জমিদারের কথা, যার বেহিসাবি খরচের বিরুদ্ধে এলাকার মানুষ তীব্র ভাষায় ' },
-      { word: 'INVEIGH' },
-      { text: ' করত।' },
+      {
+        text: "বিশ্ববিদ্যালয়ের পুরোনো আর্কাইভে ঢুকে তানিয়া দেখল, তাকগুলো বেশ ",
+      },
+      { word: "ANTIQUATED" },
+      { text: " এবং সেখানে এমন কিছু " },
+      { word: "ESOTERIC" },
+      {
+        text: " বই রাখা আছে যা কেবল হাতেগোনা কয়েকজন গবেষকই বোঝেন। সে প্রতিটি পাতা গভীরভাবে ",
+      },
+      { word: "SCRUTINIZE" },
+      { text: " করতে লাগল। এক জায়গায় সে পড়ল এক " },
+      { word: "PRODIGAL" },
+      {
+        text: " জমিদারের কথা, যার বেহিসাবি খরচের বিরুদ্ধে এলাকার মানুষ তীব্র ভাষায় ",
+      },
+      { word: "INVEIGH" },
+      { text: " করত।" },
     ],
     words: {
       ANTIQUATED: {
-        word: 'ANTIQUATED',
-        pos: 'Adjective',
-        bn: 'সেকেলে, অপ্রচলিত, প্রাচীন',
-        example: 'The company finally replaced its antiquated accounting software.',
-        mnemonic: 'Antique (পুরাকীর্তি) — যে জিনিস এখন আর আধুনিক নয়, একেবারে সেকেলে।',
-        synonyms: ['Outdated', 'Obsolete', 'Archaic'],
-        antonyms: ['Modern', 'Contemporary'],
-        context: 'পুরোনো আমলের তাক ও ব্যবস্থা বোঝাতে বসেছে।',
+        word: "ANTIQUATED",
+        pos: "Adjective",
+        bn: "সেকেলে, অপ্রচলিত, প্রাচীন",
+        example:
+          "The company finally replaced its antiquated accounting software.",
+        mnemonic:
+          "Antique (পুরাকীর্তি) — যে জিনিস এখন আর আধুনিক নয়, একেবারে সেকেলে।",
+        synonyms: ["Outdated", "Obsolete", "Archaic"],
+        antonyms: ["Modern", "Contemporary"],
+        context: "পুরোনো আমলের তাক ও ব্যবস্থা বোঝাতে বসেছে।",
       },
       ESOTERIC: {
-        word: 'ESOTERIC',
-        pos: 'Adjective',
-        bn: 'গূঢ়, কেবল বিশেষজ্ঞদের বোধগম্য',
-        example: 'The lecture was full of esoteric physics terminology.',
-        mnemonic: 'Eso + Terrific — সাধারণের নাগালের বাইরে, কেবল গুটিকয়েক মানুষ বোঝে।',
-        synonyms: ['Arcane', 'Obscure', 'Cryptic'],
-        antonyms: ['Commonplace', 'Accessible'],
-        context: 'দুর্লভ ও গূঢ় গবেষণামূলক বইয়ের ধরন বোঝাচ্ছে।',
+        word: "ESOTERIC",
+        pos: "Adjective",
+        bn: "গূঢ়, কেবল বিশেষজ্ঞদের বোধগম্য",
+        example: "The lecture was full of esoteric physics terminology.",
+        mnemonic:
+          "Eso + Terrific — সাধারণের নাগালের বাইরে, কেবল গুটিকয়েক মানুষ বোঝে।",
+        synonyms: ["Arcane", "Obscure", "Cryptic"],
+        antonyms: ["Commonplace", "Accessible"],
+        context: "দুর্লভ ও গূঢ় গবেষণামূলক বইয়ের ধরন বোঝাচ্ছে।",
       },
       SCRUTINIZE: {
-        word: 'SCRUTINIZE',
-        pos: 'Verb',
-        bn: 'খুঁটিয়ে পরীক্ষা করা, সূক্ষ্মভাবে যাচাই করা',
-        example: 'Auditors will scrutinize every receipt before approving the budget.',
-        mnemonic: 'Screw + Eyes — চোখ স্ক্রুর মতো আটকে রেখে প্রতিটি খুঁটিনাটি দেখা।',
-        synonyms: ['Examine', 'Inspect', 'Analyze'],
-        antonyms: ['Glance', 'Overlook'],
-        context: 'পাণ্ডুলিপির পাতাগুলো মন দিয়ে যাচাই করা বোঝাতে ব্যবহৃত।',
+        word: "SCRUTINIZE",
+        pos: "Verb",
+        bn: "খুঁটিয়ে পরীক্ষা করা, সূক্ষ্মভাবে যাচাই করা",
+        example:
+          "Auditors will scrutinize every receipt before approving the budget.",
+        mnemonic:
+          "Screw + Eyes — চোখ স্ক্রুর মতো আটকে রেখে প্রতিটি খুঁটিনাটি দেখা।",
+        synonyms: ["Examine", "Inspect", "Analyze"],
+        antonyms: ["Glance", "Overlook"],
+        context: "পাণ্ডুলিপির পাতাগুলো মন দিয়ে যাচাই করা বোঝাতে ব্যবহৃত।",
       },
       PRODIGAL: {
-        word: 'PRODIGAL',
-        pos: 'Adjective',
-        bn: 'অপব্যয়ী, বেহিসাবি খরচকারী',
-        example: 'His prodigal spending habits quickly drained the family fortune.',
-        mnemonic: 'Pro + Dig + All — সব টাকা-পয়সা অকাতরে উড়িয়ে দেওয়া।',
-        synonyms: ['Wasteful', 'Extravagant', 'Spendthrift'],
-        antonyms: ['Frugal', 'Thrifty'],
-        context: 'জমিদারের বেহিসাবি খরচের স্বভাব তুলে ধরছে।',
+        word: "PRODIGAL",
+        pos: "Adjective",
+        bn: "অপব্যয়ী, বেহিসাবি খরচকারী",
+        example:
+          "His prodigal spending habits quickly drained the family fortune.",
+        mnemonic: "Pro + Dig + All — সব টাকা-পয়সা অকাতরে উড়িয়ে দেওয়া।",
+        synonyms: ["Wasteful", "Extravagant", "Spendthrift"],
+        antonyms: ["Frugal", "Thrifty"],
+        context: "জমিদারের বেহিসাবি খরচের স্বভাব তুলে ধরছে।",
       },
       INVEIGH: {
-        word: 'INVEIGH',
-        pos: 'Verb',
-        bn: 'তীব্র ভাষায় প্রতিবাদ বা সমালোচনা করা',
-        example: 'Citizens began to inveigh against the sudden rise in utility bills.',
-        mnemonic: 'In + Weigh — ভারী ও কড়া কথায় কারও বিরুদ্ধে প্রতিবাদ করা।',
-        synonyms: ['Rail', 'Denounce', 'Protest'],
-        antonyms: ['Endorse', 'Praise'],
-        context: 'জমিদারের অপচয়ের বিরুদ্ধে মানুষের তীব্র ক্ষোভ প্রকাশ করছে।',
+        word: "INVEIGH",
+        pos: "Verb",
+        bn: "তীব্র ভাষায় প্রতিবাদ বা সমালোচনা করা",
+        example:
+          "Citizens began to inveigh against the sudden rise in utility bills.",
+        mnemonic: "In + Weigh — ভারী ও কড়া কথায় কারও বিরুদ্ধে প্রতিবাদ করা।",
+        synonyms: ["Rail", "Denounce", "Protest"],
+        antonyms: ["Endorse", "Praise"],
+        context: "জমিদারের অপচয়ের বিরুদ্ধে মানুষের তীব্র ক্ষোভ প্রকাশ করছে।",
       },
     },
   },
   {
-    id: 'story-51',
-    number: 'গল্প ৫১',
-    badge: 'নতুন ৫০ গল্পের সংযোজন • জিরো ওভারল্যাপ',
-    title: 'আদালতের প্রথম দিন',
+    id: "story-51",
+    number: "গল্প ৫১",
+    badge: "নতুন ৫০ গল্পের সংযোজন • জিরো ওভারল্যাপ",
+    title: "আদালতের প্রথম দিন",
     segments: [
-      { text: 'আদালতের বারান্দায় পা রাখতেই এক সাংবাদিক এসে তরুণ আইনজীবী নাফিসকে ' },
-      { word: 'ACCOST' },
-      { text: ' করল। তার মক্কেলকে নির্দোষ প্রমাণ করে ' },
-      { word: 'ACQUIT' },
-      { text: ' করানোই ছিল আজকের বড় চ্যালেঞ্জ। বিচারকের সামনে নাফিস একের পর এক শক্তিশালী প্রমাণ ' },
-      { word: 'ADDUCE' },
-      { text: ' করল। বিপক্ষের আইনজীবী শুরুতে বেশ ' },
-      { word: 'BELLIGERENT' },
-      { text: ' আচরণ করলেও এবং নানা আইনি ' },
-      { word: 'CHICANERY' },
-      { text: ' করার চেষ্টা করলেও, শেষ পর্যন্ত সিসিটিভি ফুটেজ নাফিসের প্রতিটি যুক্তিকে ' },
-      { word: 'CORROBORATE' },
-      { text: ' করে দিল।' },
+      {
+        text: "আদালতের বারান্দায় পা রাখতেই এক সাংবাদিক এসে তরুণ আইনজীবী নাফিসকে ",
+      },
+      { word: "ACCOST" },
+      { text: " করল। তার মক্কেলকে নির্দোষ প্রমাণ করে " },
+      { word: "ACQUIT" },
+      {
+        text: " করানোই ছিল আজকের বড় চ্যালেঞ্জ। বিচারকের সামনে নাফিস একের পর এক শক্তিশালী প্রমাণ ",
+      },
+      { word: "ADDUCE" },
+      { text: " করল। বিপক্ষের আইনজীবী শুরুতে বেশ " },
+      { word: "BELLIGERENT" },
+      { text: " আচরণ করলেও এবং নানা আইনি " },
+      { word: "CHICANERY" },
+      {
+        text: " করার চেষ্টা করলেও, শেষ পর্যন্ত সিসিটিভি ফুটেজ নাফিসের প্রতিটি যুক্তিকে ",
+      },
+      { word: "CORROBORATE" },
+      { text: " করে দিল।" },
     ],
     words: {
       ACCOST: {
-        word: 'ACCOST',
-        pos: 'Verb',
-        bn: 'হঠাৎ পথ আগলে কথা বলা',
-        example: 'Reporters accosted the celebrity outside the airport terminal.',
-        mnemonic: 'At + Cost — যেকোনো মূল্যে সামনে এসে কথা বলার জন্য পথ আগলানো।',
-        synonyms: ['Confront', 'Approach', 'Waylay'],
-        antonyms: ['Avoid', 'Ignore'],
-        context: 'সাংবাদিকের হঠাৎ সামনে এসে প্রশ্ন করা বোঝাচ্ছে।',
+        word: "ACCOST",
+        pos: "Verb",
+        bn: "হঠাৎ পথ আগলে কথা বলা",
+        example:
+          "Reporters accosted the celebrity outside the airport terminal.",
+        mnemonic:
+          "At + Cost — যেকোনো মূল্যে সামনে এসে কথা বলার জন্য পথ আগলানো।",
+        synonyms: ["Confront", "Approach", "Waylay"],
+        antonyms: ["Avoid", "Ignore"],
+        context: "সাংবাদিকের হঠাৎ সামনে এসে প্রশ্ন করা বোঝাচ্ছে।",
       },
       ACQUIT: {
-        word: 'ACQUIT',
-        pos: 'Verb',
-        bn: 'অভিযোগ থেকে বেকসুর খালাস দেওয়া',
-        example: 'The jury voted to acquit the defendant due to lack of evidence.',
-        mnemonic: 'Act + Quit — অভিযোগের ঝামেলা থেকে পুরোপুরি মুক্ত বা খালাস।',
-        synonyms: ['Exonerate', 'Absolve', 'Clear'],
-        antonyms: ['Convict', 'Condemn'],
-        context: 'মক্কেলকে নির্দোষ প্রমাণ করে মুক্তি দেওয়ার অর্থে ব্যবহৃত।',
+        word: "ACQUIT",
+        pos: "Verb",
+        bn: "অভিযোগ থেকে বেকসুর খালাস দেওয়া",
+        example:
+          "The jury voted to acquit the defendant due to lack of evidence.",
+        mnemonic: "Act + Quit — অভিযোগের ঝামেলা থেকে পুরোপুরি মুক্ত বা খালাস।",
+        synonyms: ["Exonerate", "Absolve", "Clear"],
+        antonyms: ["Convict", "Condemn"],
+        context: "মক্কেলকে নির্দোষ প্রমাণ করে মুক্তি দেওয়ার অর্থে ব্যবহৃত।",
       },
       ADDUCE: {
-        word: 'ADDUCE',
-        pos: 'Verb',
-        bn: 'প্রমাণ বা যুক্তি হিসেবে উপস্থাপন করা',
-        example: 'She was able to adduce several historical records to support her claim.',
-        mnemonic: 'Add + Produce — যুক্তির পক্ষে নতুন প্রমাণ হাজির করা।',
-        synonyms: ['Cite', 'Present', 'Offer'],
-        antonyms: ['Conceal', 'Suppress'],
-        context: 'বিচারকের সামনে প্রামাণ্য তথ্য তুলে ধরা বোঝাচ্ছে।',
+        word: "ADDUCE",
+        pos: "Verb",
+        bn: "প্রমাণ বা যুক্তি হিসেবে উপস্থাপন করা",
+        example:
+          "She was able to adduce several historical records to support her claim.",
+        mnemonic: "Add + Produce — যুক্তির পক্ষে নতুন প্রমাণ হাজির করা।",
+        synonyms: ["Cite", "Present", "Offer"],
+        antonyms: ["Conceal", "Suppress"],
+        context: "বিচারকের সামনে প্রামাণ্য তথ্য তুলে ধরা বোঝাচ্ছে।",
       },
       BELLIGERENT: {
-        word: 'BELLIGERENT',
-        pos: 'Adjective',
-        bn: 'আক্রমণাত্মক, কলহপ্রিয়, যুদ্ধংদেহী',
-        example: 'His belligerent tone turned a calm debate into an argument.',
-        mnemonic: 'Belli (যুদ্ধ) + Rent — সবসময় ঝগড়া বা আক্রমণাত্মক মেজাজে থাকা।',
-        synonyms: ['Hostile', 'Aggressive', 'Combative'],
-        antonyms: ['Peaceful', 'Amiable'],
-        context: 'বিপক্ষের আইনজীবীর উগ্র ও আক্রমণাত্মক আচরণ বোঝাতে বসেছে।',
+        word: "BELLIGERENT",
+        pos: "Adjective",
+        bn: "আক্রমণাত্মক, কলহপ্রিয়, যুদ্ধংদেহী",
+        example: "His belligerent tone turned a calm debate into an argument.",
+        mnemonic:
+          "Belli (যুদ্ধ) + Rent — সবসময় ঝগড়া বা আক্রমণাত্মক মেজাজে থাকা।",
+        synonyms: ["Hostile", "Aggressive", "Combative"],
+        antonyms: ["Peaceful", "Amiable"],
+        context: "বিপক্ষের আইনজীবীর উগ্র ও আক্রমণাত্মক আচরণ বোঝাতে বসেছে।",
       },
       CHICANERY: {
-        word: 'CHICANERY',
-        pos: 'Noun',
-        bn: 'ছলচাতুরী, প্রতারণামূলক কৌশল',
-        example: 'The investigation exposed financial chicanery within the firm.',
-        mnemonic: 'Chicken + Trickery — মুরগির মতো এদিক-ওদিক পালিয়ে ছলচাতুরী করা।',
-        synonyms: ['Deception', 'Trickery', 'Subterfuge'],
-        antonyms: ['Honesty', 'Candor'],
-        context: 'মামলা ঘোরানোর জন্য করা কূটকৌশল বোঝাচ্ছে।',
+        word: "CHICANERY",
+        pos: "Noun",
+        bn: "ছলচাতুরী, প্রতারণামূলক কৌশল",
+        example:
+          "The investigation exposed financial chicanery within the firm.",
+        mnemonic:
+          "Chicken + Trickery — মুরগির মতো এদিক-ওদিক পালিয়ে ছলচাতুরী করা।",
+        synonyms: ["Deception", "Trickery", "Subterfuge"],
+        antonyms: ["Honesty", "Candor"],
+        context: "মামলা ঘোরানোর জন্য করা কূটকৌশল বোঝাচ্ছে।",
       },
       CORROBORATE: {
-        word: 'CORROBORATE',
-        pos: 'Verb',
-        bn: 'সত্যতা সমর্থন বা নিশ্চিত করা',
-        example: 'Two independent witnesses corroborated the driver’s statement.',
-        mnemonic: 'Co (সাথে) + Roborate (শক্তিশালী) — আরেকটি প্রমাণ দিয়ে কথাকে আরও শক্তিশালী করা।',
-        synonyms: ['Confirm', 'Verify', 'Substantiate'],
-        antonyms: ['Contradict', 'Refute'],
-        context: 'সিসিটিভি ফুটেজ দিয়ে যুক্তির সত্যতা প্রমাণিত হওয়া বোঝাচ্ছে।',
+        word: "CORROBORATE",
+        pos: "Verb",
+        bn: "সত্যতা সমর্থন বা নিশ্চিত করা",
+        example:
+          "Two independent witnesses corroborated the driver’s statement.",
+        mnemonic:
+          "Co (সাথে) + Roborate (শক্তিশালী) — আরেকটি প্রমাণ দিয়ে কথাকে আরও শক্তিশালী করা।",
+        synonyms: ["Confirm", "Verify", "Substantiate"],
+        antonyms: ["Contradict", "Refute"],
+        context: "সিসিটিভি ফুটেজ দিয়ে যুক্তির সত্যতা প্রমাণিত হওয়া বোঝাচ্ছে।",
       },
     },
   },
@@ -342,93 +391,98 @@ const STORIES = [
 
 const FLASHCARDS = [
   {
-    word: 'RETICENT',
-    pos: 'Adjective',
-    bn: 'স্বল্পভাষী / সংযত',
-    hackTitle: 'Roti + Cent',
-    hackDetail: "'রুটি' বা 'কথা' বলার জন্য এক পয়সাও খরচ করতে নারাজ — অর্থাৎ খুব কম কথা বলে!",
-    synonyms: 'Reserved, Taciturn',
-    antonyms: 'Garrulous, Talkative',
+    word: "RETICENT",
+    pos: "Adjective",
+    bn: "স্বল্পভাষী / সংযত",
+    hackTitle: "Roti + Cent",
+    hackDetail:
+      "'রুটি' বা 'কথা' বলার জন্য এক পয়সাও খরচ করতে নারাজ — অর্থাৎ খুব কম কথা বলে!",
+    synonyms: "Reserved, Taciturn",
+    antonyms: "Garrulous, Talkative",
   },
   {
-    word: 'AMELIORATE',
-    pos: 'Verb',
-    bn: 'উন্নতি করা / লাঘব করা',
-    hackTitle: 'Ameli + Orate',
-    hackDetail: "'আমেলি' নামের মেয়েটি দারুণ কথা বলে খারাপ পরিস্থিতির উন্নতি ঘটায়।",
-    synonyms: 'Improve, Alleviate',
-    antonyms: 'Aggravate, Worsen',
+    word: "AMELIORATE",
+    pos: "Verb",
+    bn: "উন্নতি করা / লাঘব করা",
+    hackTitle: "Ameli + Orate",
+    hackDetail:
+      "'আমেলি' নামের মেয়েটি দারুণ কথা বলে খারাপ পরিস্থিতির উন্নতি ঘটায়।",
+    synonyms: "Improve, Alleviate",
+    antonyms: "Aggravate, Worsen",
   },
   {
-    word: 'CENSURE',
-    pos: 'Noun / Verb',
-    bn: 'তিরস্কার / কঠোর নিন্দা',
-    hackTitle: 'Sen + Sure',
-    hackDetail: 'সেন্সর বোর্ড কোনো আপত্তিকর দৃশ্য দেখলেই নিশ্চিতভাবে তিরস্কার করে।',
-    synonyms: 'Reprimand, Rebuke',
-    antonyms: 'Commend, Praise',
+    word: "CENSURE",
+    pos: "Noun / Verb",
+    bn: "তিরস্কার / কঠোর নিন্দা",
+    hackTitle: "Sen + Sure",
+    hackDetail:
+      "সেন্সর বোর্ড কোনো আপত্তিকর দৃশ্য দেখলেই নিশ্চিতভাবে তিরস্কার করে।",
+    synonyms: "Reprimand, Rebuke",
+    antonyms: "Commend, Praise",
   },
   {
-    word: 'ACUMEN',
-    pos: 'Noun',
-    bn: 'তীক্ষ্ণ বুদ্ধি / বিচক্ষণতা',
-    hackTitle: 'Acute + Men',
-    hackDetail: 'Acute মানে তীক্ষ্ণ — যে মানুষের বুদ্ধি অত্যন্ত তীক্ষ্ণ ও সূক্ষ্ম।',
-    synonyms: 'Astuteness, Shrewdness',
-    antonyms: 'Naivety, Ignorance',
+    word: "ACUMEN",
+    pos: "Noun",
+    bn: "তীক্ষ্ণ বুদ্ধি / বিচক্ষণতা",
+    hackTitle: "Acute + Men",
+    hackDetail:
+      "Acute মানে তীক্ষ্ণ — যে মানুষের বুদ্ধি অত্যন্ত তীক্ষ্ণ ও সূক্ষ্ম।",
+    synonyms: "Astuteness, Shrewdness",
+    antonyms: "Naivety, Ignorance",
   },
   {
-    word: 'CORROBORATE',
-    pos: 'Verb',
-    bn: 'প্রমাণ দিয়ে সমর্থন করা',
-    hackTitle: 'Co + Roborate',
-    hackDetail: 'Co (সাথে) + Robust (শক্তিশালী) — অতিরিক্ত প্রমাণ দিয়ে কোনো বক্তব্যকে পাকাপোক্ত করা।',
-    synonyms: 'Substantiate, Confirm',
-    antonyms: 'Contradict, Disprove',
+    word: "CORROBORATE",
+    pos: "Verb",
+    bn: "প্রমাণ দিয়ে সমর্থন করা",
+    hackTitle: "Co + Roborate",
+    hackDetail:
+      "Co (সাথে) + Robust (শক্তিশালী) — অতিরিক্ত প্রমাণ দিয়ে কোনো বক্তব্যকে পাকাপোক্ত করা।",
+    synonyms: "Substantiate, Confirm",
+    antonyms: "Contradict, Disprove",
   },
   {
-    word: 'CHICANERY',
-    pos: 'Noun',
-    bn: 'ছলচাতুরী / কূটকৌশল',
-    hackTitle: 'Chicken + Trickery',
-    hackDetail: 'ধরা পড়ার ভয়ে এদিক-ওদিক ছুটে ছলচাতুরী ও প্রতারণার আশ্রয় নেওয়া।',
-    synonyms: 'Subterfuge, Deception',
-    antonyms: 'Candor, Honesty',
+    word: "CHICANERY",
+    pos: "Noun",
+    bn: "ছলচাতুরী / কূটকৌশল",
+    hackTitle: "Chicken + Trickery",
+    hackDetail: "ধরা পড়ার ভয়ে এদিক-ওদিক ছুটে ছলচাতুরী ও প্রতারণার আশ্রয় নেওয়া।",
+    synonyms: "Subterfuge, Deception",
+    antonyms: "Candor, Honesty",
   },
 ];
 
 const FAQS = [
   {
-    q: 'ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড কি আলাদাভাবে কেনা যাবে?',
-    a: 'না, ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না। তবে মাত্র ১৫০৳-এর মেগা বান্ডেল অফারে (নিয়মিত মূল্য ৩০০৳) প্রো ইবুকের ডে ও নাইট দুটি ৩৫৭ পৃষ্ঠার ইলাস্ট্রেটেড PDF-এর সাথেই ১,৮৭৭ শব্দের ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (অফলাইন UK/US অডিওসহ) ও Anki ডেক একসাথে পাবেন।',
+    q: "ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড কি আলাদাভাবে কেনা যাবে?",
+    a: "না, ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না। তবে মাত্র ১৫০৳-এর মেগা বান্ডেল অফারে (নিয়মিত মূল্য ৩০০৳) প্রো ইবুকের ডে ও নাইট দুটি ৩৫৭ পৃষ্ঠার ইলাস্ট্রেটেড PDF-এর সাথেই ১,৮৭৭ শব্দের ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (অফলাইন UK/US অডিওসহ) ও Anki ডেক একসাথে পাবেন।",
   },
   {
-    q: 'ইবুকটি অর্ডার করার পর কীভাবে এবং কখন হাতে পাব?',
-    a: 'আমাদের বিকাশ নম্বরে (01511808472) ১০০৳ পাঠিয়ে ট্রানজেকশন আইডি বা স্ক্রিনশট হোয়াটসঅ্যাপে পাঠানোর সাথে সাথেই আপনাকে ৩০৪ পৃষ্ঠার হাই-কোয়ালিটি PDF ইবুকটি পাঠিয়ে দেওয়া হবে।',
+    q: "ইবুকটি অর্ডার করার পর কীভাবে এবং কখন হাতে পাব?",
+    a: "আমাদের বিকাশ নম্বরে (01511808472) ১০০৳ পাঠিয়ে ট্রানজেকশন আইডি বা স্ক্রিনশট হোয়াটসঅ্যাপে পাঠানোর সাথে সাথেই আপনাকে ৩০৪ পৃষ্ঠার হাই-কোয়ালিটি PDF ইবুকটি পাঠিয়ে দেওয়া হবে।",
   },
   {
-    q: 'এটি কি শুধু GRE, GMAT বা SAT পরীক্ষার্থীদের জন্য?',
-    a: 'মূলত GRE, GMAT এবং SAT-এর হাই-ফ্রিকোয়েন্সি ২,০০০+ শব্দ নিয়ে তৈরি হলেও IELTS, BCS, Bank Job এবং ইংরেজি রিডিং স্কিল বাড়াতে চাওয়া যেকোনো শিক্ষার্থী ও পেশাজীবীর জন্য এটি দারুণ কার্যকর।',
+    q: "এটি কি শুধু GRE, GMAT বা SAT পরীক্ষার্থীদের জন্য?",
+    a: "মূলত GRE, GMAT এবং SAT-এর হাই-ফ্রিকোয়েন্সি ২,০০০+ শব্দ নিয়ে তৈরি হলেও IELTS, BCS, Bank Job এবং ইংরেজি রিডিং স্কিল বাড়াতে চাওয়া যেকোনো শিক্ষার্থী ও পেশাজীবীর জন্য এটি দারুণ কার্যকর।",
   },
   {
-    q: 'আগের ৫০ গল্পের সংস্করণের সাথে এই নতুন ১০০ গল্পের সংস্করণের পার্থক্য কী?',
-    a: 'আগের ১–৫০ গল্পের সব বানান ও তথ্যগত ত্রুটি সংশোধন করা হয়েছে, তার সাথে সম্পূর্ণ নতুন ৫১–১০০ নম্বর আরও ৫০টি গল্পে ১,০০০টি একদম নতুন (জিরো ওভারল্যাপ) শব্দ যোগ করা হয়েছে। এছাড়া পুরো ৩০৪ পৃষ্ঠা চোখের আরামের জন্য নতুন আই-ফ্রেন্ডলি লাইট থিমে ডিজাইন করা হয়েছে।',
+    q: "আগের ৫০ গল্পের সংস্করণের সাথে এই নতুন ১০০ গল্পের সংস্করণের পার্থক্য কী?",
+    a: "আগের ১–৫০ গল্পের সব বানান ও তথ্যগত ত্রুটি সংশোধন করা হয়েছে, তার সাথে সম্পূর্ণ নতুন ৫১–১০০ নম্বর আরও ৫০টি গল্পে ১,০০০টি একদম নতুন (জিরো ওভারল্যাপ) শব্দ যোগ করা হয়েছে। এছাড়া পুরো ৩০৪ পৃষ্ঠা চোখের আরামের জন্য নতুন আই-ফ্রেন্ডলি লাইট থিমে ডিজাইন করা হয়েছে।",
   },
   {
-    q: 'মুখস্থ করা ছাড়া সত্যিই কি গল্প পড়ে শব্দ মনে রাখা সম্ভব?',
-    a: 'হ্যাঁ! প্রতিটি গল্পে শব্দগুলো বাস্তব বাংলা প্রেক্ষাপটে বসানো আছে, তার ঠিক নিচেই থাকছে শব্দের অর্থ, ইংরেজি উদাহরণ, বাংলা মেমোরি হ্যাক (Mnemonic) এবং সিনোনিম-অ্যান্টোনিম—ফলে মস্তিষ্ক ছবি ও গল্পের মাধ্যমে শব্দগুলো দীর্ঘদিন মনে রাখে।',
+    q: "মুখস্থ করা ছাড়া সত্যিই কি গল্প পড়ে শব্দ মনে রাখা সম্ভব?",
+    a: "হ্যাঁ! প্রতিটি গল্পে শব্দগুলো বাস্তব বাংলা প্রেক্ষাপটে বসানো আছে, তার ঠিক নিচেই থাকছে শব্দের অর্থ, ইংরেজি উদাহরণ, বাংলা মেমোরি হ্যাক (Mnemonic) এবং সিনোনিম-অ্যান্টোনিম—ফলে মস্তিষ্ক ছবি ও গল্পের মাধ্যমে শব্দগুলো দীর্ঘদিন মনে রাখে।",
   },
   {
-    q: 'পেমেন্ট কীভাবে করব এবং দাম কত?',
-    a: 'ইবুকটির প্রকৃত দাম ২০০৳, তবে এখন ৫০% ডিসকাউন্টে পাচ্ছেন মাত্র ১০০৳-এ! আপনি সরাসরি বিকাশের মাধ্যমে ১০০৳ পাঠিয়ে ট্রানজেকশন আইডি অথবা স্ক্রিনশট আমাদের হোয়াটসঅ্যাপ নম্বরে (01737808472) পাঠিয়ে দিলেই ইবুকটি পেয়ে যাবেন।',
+    q: "পেমেন্ট কীভাবে করব এবং দাম কত?",
+    a: "ইবুকটির প্রকৃত দাম ২০০৳, তবে এখন ৫০% ডিসকাউন্টে পাচ্ছেন মাত্র ১০০৳-এ! আপনি সরাসরি বিকাশের মাধ্যমে ১০০৳ পাঠিয়ে ট্রানজেকশন আইডি অথবা স্ক্রিনশট আমাদের হোয়াটসঅ্যাপ নম্বরে (01737808472) পাঠিয়ে দিলেই ইবুকটি পেয়ে যাবেন।",
   },
 ];
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeStoryIdx, setActiveStoryIdx] = useState(0);
-  const [selectedWordKey, setSelectedWordKey] = useState('RETICENT');
-  const [storyViewMode, setStoryViewMode] = useState('interactive');
+  const [selectedWordKey, setSelectedWordKey] = useState("RETICENT");
+  const [storyViewMode, setStoryViewMode] = useState("interactive");
 
   // Flashcard state
   const [cardIdx, setCardIdx] = useState(0);
@@ -436,15 +490,15 @@ export default function App() {
   const [masteredCards, setMasteredCards] = useState({});
 
   // Eye-comfort comparison toggle
-  const [readingTheme, setReadingTheme] = useState('light');
+  const [readingTheme, setReadingTheme] = useState("light");
 
   // FAQ accordion
   const [openFaq, setOpenFaq] = useState(0);
 
   // Manual bKash Order Modal state
   const [orderModalOpen, setOrderModalOpen] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState('bundle'); // 'ebook' | 'bundle'
-  const [copiedField, setCopiedField] = useState(''); // 'bkash' | 'whatsapp' | ''
+  const [selectedPlan, setSelectedPlan] = useState("bundle"); // 'ebook' | 'bundle'
+  const [copiedField, setCopiedField] = useState(""); // 'bkash' | 'whatsapp' | ''
 
   const currentStory = STORIES[activeStoryIdx];
   const storyWordList = Object.values(currentStory.words);
@@ -460,7 +514,7 @@ export default function App() {
     setMobileMenuOpen(false);
     const el = document.getElementById(id);
     if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
@@ -479,41 +533,44 @@ export default function App() {
   const handleCopy = (text, field) => {
     const markCopied = () => {
       setCopiedField(field);
-      setTimeout(() => setCopiedField(''), 2200);
+      setTimeout(() => setCopiedField(""), 2200);
     };
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(markCopied).catch(() => {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try {
-          document.execCommand('copy');
-        } catch (_) {}
-        document.body.removeChild(ta);
-        markCopied();
-      });
+      navigator.clipboard
+        .writeText(text)
+        .then(markCopied)
+        .catch(() => {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          ta.style.position = "fixed";
+          ta.style.opacity = "0";
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand("copy");
+          } catch (_) {}
+          document.body.removeChild(ta);
+          markCopied();
+        });
     } else {
-      const ta = document.createElement('textarea');
+      const ta = document.createElement("textarea");
       ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
       document.body.appendChild(ta);
       ta.select();
       try {
-        document.execCommand('copy');
+        document.execCommand("copy");
       } catch (_) {}
       document.body.removeChild(ta);
       markCopied();
     }
   };
 
-  const openOrderModal = (plan = 'ebook') => {
-    setSelectedPlan(plan === 'bundle' ? 'bundle' : 'ebook');
-    setCopiedField('');
+  const openOrderModal = (plan = "ebook") => {
+    setSelectedPlan(plan === "bundle" ? "bundle" : "ebook");
+    setCopiedField("");
     setOrderModalOpen(true);
     setMobileMenuOpen(false);
   };
@@ -521,7 +578,10 @@ export default function App() {
   return (
     <div
       className="min-h-screen bg-gradient-to-b from-[#FAF8FF] via-[#F6F1FF] to-[#FAF8FF] text-[#1F1B2E] antialiased selection:bg-[#7C3AED] selection:text-white"
-      style={{ fontFamily: "'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" }}
+      style={{
+        fontFamily:
+          "'Hind Siliguri', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif",
+      }}
     >
       {/* Sticky Navigation Bar — Clean Top Start (No Top Banner) */}
       <header className="sticky top-0 z-40 bg-[#FAF8FF]/90 backdrop-blur-md border-b border-[#E7DEFF]">
@@ -529,7 +589,7 @@ export default function App() {
           <div className="flex items-center justify-between gap-4 h-20">
             {/* Left: Vocab Hero Superhero Logo + Brand Name + Only Mr. Grasshopper */}
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               className="flex items-center gap-3 group text-left focus:outline-none shrink-0"
             >
               <div className="relative shrink-0">
@@ -560,31 +620,31 @@ export default function App() {
             {/* Desktop Nav Links — strictly single-line with whitespace-nowrap */}
             <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-bold text-[#4B3F6B]">
               <button
-                onClick={() => scrollToSection('promo-video')}
+                onClick={() => scrollToSection("promo-video")}
                 className="whitespace-nowrap shrink-0 hover:text-[#7C3AED] transition-colors"
               >
                 প্রোমো ভিডিও
               </button>
               <button
-                onClick={() => scrollToSection('sample-story')}
+                onClick={() => scrollToSection("sample-story")}
                 className="whitespace-nowrap shrink-0 hover:text-[#7C3AED] transition-colors"
               >
                 নমুনা গল্প
               </button>
               <button
-                onClick={() => scrollToSection('memory-hacks')}
+                onClick={() => scrollToSection("memory-hacks")}
                 className="whitespace-nowrap shrink-0 hover:text-[#7C3AED] transition-colors"
               >
                 মেমোরি হ্যাক
               </button>
               <button
-                onClick={() => scrollToSection('features')}
+                onClick={() => scrollToSection("features")}
                 className="whitespace-nowrap shrink-0 hover:text-[#7C3AED] transition-colors"
               >
                 বৈশিষ্ট্য
               </button>
               <button
-                onClick={() => scrollToSection('faq')}
+                onClick={() => scrollToSection("faq")}
                 className="whitespace-nowrap shrink-0 hover:text-[#7C3AED] transition-colors"
               >
                 প্রশ্নোত্তর
@@ -608,7 +668,11 @@ export default function App() {
               className="lg:hidden p-2 rounded-xl text-[#4C1D95] hover:bg-[#EDE9FE] transition-colors shrink-0"
               aria-label="মেনু খুলুন"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
@@ -617,11 +681,11 @@ export default function App() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-[#FAF8FF] border-t border-[#E7DEFF] px-4 pt-3 pb-5 space-y-2 shadow-lg">
             {[
-              { id: 'promo-video', label: 'প্রোমো ভিডিও দেখুন' },
-              { id: 'sample-story', label: 'নমুনা গল্প পড়ুন' },
-              { id: 'memory-hacks', label: 'মেমোরি হ্যাক ফ্ল্যাশকার্ড' },
-              { id: 'features', label: 'ইবুকের বৈশিষ্ট্য' },
-              { id: 'faq', label: 'সাধারণ প্রশ্নোত্তর' },
+              { id: "promo-video", label: "প্রোমো ভিডিও দেখুন" },
+              { id: "sample-story", label: "নমুনা গল্প পড়ুন" },
+              { id: "memory-hacks", label: "মেমোরি হ্যাক ফ্ল্যাশকার্ড" },
+              { id: "features", label: "ইবুকের বৈশিষ্ট্য" },
+              { id: "faq", label: "সাধারণ প্রশ্নোত্তর" },
             ].map((item) => (
               <button
                 key={item.id}
@@ -649,14 +713,14 @@ export default function App() {
           className="pointer-events-none absolute -top-24 right-0 w-[500px] h-[500px] rounded-full opacity-35 blur-3xl"
           style={{
             background:
-              'radial-gradient(circle, rgba(168,85,247,0.45) 0%, rgba(232,121,249,0.22) 50%, transparent 75%)',
+              "radial-gradient(circle, rgba(168,85,247,0.45) 0%, rgba(232,121,249,0.22) 50%, transparent 75%)",
           }}
         />
         <div
           className="pointer-events-none absolute bottom-0 -left-24 w-[420px] h-[420px] rounded-full opacity-30 blur-3xl"
           style={{
             background:
-              'radial-gradient(circle, rgba(139,92,246,0.35) 0%, rgba(196,181,253,0.18) 55%, transparent 75%)',
+              "radial-gradient(circle, rgba(139,92,246,0.35) 0%, rgba(196,181,253,0.18) 55%, transparent 75%)",
           }}
         />
 
@@ -677,7 +741,7 @@ export default function App() {
               </div>
 
               <h1 className="text-3xl sm:text-5xl lg:text-[52px] font-extrabold leading-[1.18] tracking-tight text-[#2E1065]">
-                মুখস্থ নয়—গল্প পড়েই হয়ে উঠুন সত্যিকারের{' '}
+                মুখস্থ নয়—গল্প পড়েই হয়ে উঠুন সত্যিকারের{" "}
                 <span className="relative inline-block bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#DB2777] bg-clip-text text-transparent">
                   VOCAB HERO!
                   <span className="absolute left-0 -bottom-1 w-full h-2.5 bg-[#FDE047]/70 -z-10 rounded-full" />
@@ -685,11 +749,17 @@ export default function App() {
               </h1>
 
               <p className="text-base sm:text-lg text-[#4B3F6B] leading-relaxed max-w-2xl">
-                ডিকশনারি বা লম্বা তালিকা মুখস্থ করে বারবার ভুলে যাওয়ার দিন শেষ।{' '}
-                <strong className="text-[#2E1065]">১০০টি দারুণ বাংলা গল্পের</strong> ভেতর দিয়ে শিখুন{' '}
-                <strong className="text-[#7C3AED]">২,০০০+ হাই-ফ্রিকোয়েন্সি ইংরেজি শব্দ</strong>—প্রতিটি
-                গল্পের সাথে থাকছে বাংলা অর্থ, ইংরেজি উদাহরণ,{' '}
-                <strong className="text-[#5B21B6]">৫৯৬+ মেমোরি হ্যাক</strong> এবং সিনোনিম-অ্যান্টোনিম।
+                ডিকশনারি বা লম্বা তালিকা মুখস্থ করে বারবার ভুলে যাওয়ার দিন শেষ।{" "}
+                <strong className="text-[#2E1065]">
+                  ১০০টি দারুণ বাংলা গল্পের
+                </strong>{" "}
+                ভেতর দিয়ে শিখুন{" "}
+                <strong className="text-[#7C3AED]">
+                  ২,০০০+ হাই-ফ্রিকোয়েন্সি ইংরেজি শব্দ
+                </strong>
+                —প্রতিটি গল্পের সাথে থাকছে বাংলা অর্থ, ইংরেজি উদাহরণ,{" "}
+                <strong className="text-[#5B21B6]">৫৯৬+ মেমোরি হ্যাক</strong>{" "}
+                এবং সিনোনিম-অ্যান্টোনিম।
               </p>
 
               {/* CTA Buttons */}
@@ -700,11 +770,13 @@ export default function App() {
                 >
                   <Sparkles className="w-5 h-5 text-[#FDE047]" />
                   <span>৫০% ছাড়ে সংগ্রহ করুন — ১০০৳</span>
-                  <span className="text-xs line-through text-white/75 font-semibold">২০০৳</span>
+                  <span className="text-xs line-through text-white/75 font-semibold">
+                    ২০০৳
+                  </span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={() => scrollToSection('promo-video')}
+                  onClick={() => scrollToSection("promo-video")}
                   className="inline-flex items-center justify-center gap-2 bg-white/90 hover:bg-[#F3E8FF] text-[#5B21B6] border-2 border-[#DDD6FE] font-bold text-base px-6 py-4 rounded-2xl transition-colors"
                 >
                   <PlayCircle className="w-5 h-5 text-[#9333EA]" />
@@ -715,9 +787,12 @@ export default function App() {
               {/* Micro Trust Points */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
                 {[
-                  { icon: Download, text: 'ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF' },
-                  { icon: Eye, text: '১০০টি গল্পে জিবলি-স্টাইল ছবি' },
-                  { icon: ShieldCheck, text: 'বান্ডেলে ১,৮৭৭ শব্দের ৩ডি ফ্ল্যাশকার্ড' },
+                  { icon: Download, text: "ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF" },
+                  { icon: Eye, text: "১০০টি গল্পে জিবলি-স্টাইল ছবি" },
+                  {
+                    icon: ShieldCheck,
+                    text: "বান্ডেলে ১,৮৭৭ শব্দের ৩ডি ফ্ল্যাশকার্ড",
+                  },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -771,8 +846,12 @@ export default function App() {
                     <BookMarked className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-extrabold text-[#2E1065] leading-tight">১০০টি গল্প</p>
-                    <p className="text-[11px] font-medium text-[#6B5B95]">৫০ ক্লাসিক + ৫০ নতুন</p>
+                    <p className="text-sm font-extrabold text-[#2E1065] leading-tight">
+                      ১০০টি গল্প
+                    </p>
+                    <p className="text-[11px] font-medium text-[#6B5B95]">
+                      ৫০ ক্লাসিক + ৫০ নতুন
+                    </p>
                   </div>
                 </div>
 
@@ -782,8 +861,12 @@ export default function App() {
                     <Brain className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-extrabold text-[#7C3AED] leading-tight">২,০০০+ শব্দ</p>
-                    <p className="text-[11px] font-medium text-[#6B5B95]">GRE • GMAT • SAT</p>
+                    <p className="text-sm font-extrabold text-[#7C3AED] leading-tight">
+                      ২,০০০+ শব্দ
+                    </p>
+                    <p className="text-[11px] font-medium text-[#6B5B95]">
+                      GRE • GMAT • SAT
+                    </p>
                   </div>
                 </div>
               </div>
@@ -794,28 +877,32 @@ export default function App() {
           <div className="mt-14 grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                value: '১০০টি গল্প',
-                label: '১–৫০ পরিমার্জিত + ৫১–১০০ সম্পূর্ণ নতুন',
+                value: "১০০টি গল্প",
+                label: "১–৫০ পরিমার্জিত + ৫১–১০০ সম্পূর্ণ নতুন",
                 icon: BookOpen,
-                accent: 'text-[#7C3AED] bg-gradient-to-br from-[#F3E8FF] to-[#EDE9FE]',
+                accent:
+                  "text-[#7C3AED] bg-gradient-to-br from-[#F3E8FF] to-[#EDE9FE]",
               },
               {
-                value: '২,০০০+ শব্দ',
-                label: 'GRE, GMAT ও SAT হাই-ফ্রিকোয়েন্সি ভোকাব',
+                value: "২,০০০+ শব্দ",
+                label: "GRE, GMAT ও SAT হাই-ফ্রিকোয়েন্সি ভোকাব",
                 icon: Layers,
-                accent: 'text-[#C026D3] bg-gradient-to-br from-[#FCE7F3] to-[#F5D0FE]',
+                accent:
+                  "text-[#C026D3] bg-gradient-to-br from-[#FCE7F3] to-[#F5D0FE]",
               },
               {
-                value: '৫৯৬+ হ্যাক',
-                label: 'বাংলা মেমোরি হ্যাক ও কন্টেক্সট চেক',
+                value: "৫৯৬+ হ্যাক",
+                label: "বাংলা মেমোরি হ্যাক ও কন্টেক্সট চেক",
                 icon: Lightbulb,
-                accent: 'text-[#B45309] bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A]',
+                accent:
+                  "text-[#B45309] bg-gradient-to-br from-[#FEF3C7] to-[#FDE68A]",
               },
               {
-                value: '৩০৪ পৃষ্ঠা',
-                label: 'চোখের আরামের ওয়ার্ম-আইভরি লাইট থিম',
+                value: "৩৫৭ পৃষ্ঠা",
+                label: "চোখের আরামের ওয়ার্ম-আইভরি লাইট থিম",
                 icon: FileText,
-                accent: 'text-[#047857] bg-gradient-to-br from-[#D1FAE5] to-[#A7F3D0]',
+                accent:
+                  "text-[#047857] bg-gradient-to-br from-[#D1FAE5] to-[#A7F3D0]",
               },
             ].map((stat, idx) => (
               <div
@@ -873,34 +960,36 @@ export default function App() {
               </span>
 
               <h2 className="text-2xl sm:text-4xl font-extrabold text-[#2E1065] leading-tight">
-                মাত্র ১ মিনিটে দেখে নিন—কীভাবে{' '}
+                মাত্র ১ মিনিটে দেখে নিন—কীভাবে{" "}
                 <span className="bg-gradient-to-r from-[#7C3AED] to-[#C026D3] bg-clip-text text-transparent">
                   গল্পে শিখি Vocabulary!
-                </span>{' '}
+                </span>{" "}
                 আপনার ইংরেজি শেখা সহজ করে দেবে
               </h2>
 
               <p className="text-sm sm:text-base text-[#4B3F6B] leading-relaxed">
-                ভোকাবুলারি মুখস্থ করে ভুলে যাওয়ার ঝামেলা থেকে বেরিয়ে এসে কীভাবে মাত্র কয়েক সপ্তাহে ২,০০০+ হাই-ফ্রিকোয়েন্সি শব্দ আত্মস্থ করবেন, তার পুরো ঝলক দেখুন এই ভিডিওতে।
+                ভোকাবুলারি মুখস্থ করে ভুলে যাওয়ার ঝামেলা থেকে বেরিয়ে এসে কীভাবে
+                মাত্র কয়েক সপ্তাহে ২,০০০+ হাই-ফ্রিকোয়েন্সি শব্দ আত্মস্থ করবেন,
+                তার পুরো ঝলক দেখুন এই ভিডিওতে।
               </p>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {[
                   {
-                    title: '১০০% গল্পভিত্তিক শেখা',
-                    desc: 'একঘেয়ে তালিকা নয়, প্রতিটি শব্দ মনে থাকবে গল্পের দৃশ্য দিয়ে।',
+                    title: "১০০% গল্পভিত্তিক শেখা",
+                    desc: "একঘেয়ে তালিকা নয়, প্রতিটি শব্দ মনে থাকবে গল্পের দৃশ্য দিয়ে।",
                   },
                   {
-                    title: '৫০% লঞ্চিং ডিসকাউন্ট',
-                    desc: 'প্রকৃত দাম ২০০৳ হলেও এখন পাচ্ছেন মাত্র ১০০৳-এ।',
+                    title: "৫০% লঞ্চিং ডিসকাউন্ট",
+                    desc: "প্রকৃত দাম ২০০৳ হলেও এখন পাচ্ছেন মাত্র ১০০৳-এ।",
                   },
                   {
-                    title: 'সহজ বিকাশ অর্ডার',
-                    desc: 'বিকাশে ১০০৳ পাঠিয়ে হোয়াটসঅ্যাপে স্ক্রিনশট দিলেই ডেলিভারি।',
+                    title: "সহজ বিকাশ অর্ডার",
+                    desc: "বিকাশে ১০০৳ পাঠিয়ে হোয়াটসঅ্যাপে স্ক্রিনশট দিলেই ডেলিভারি।",
                   },
                   {
-                    title: 'যেকোনো ডিভাইসে পড়া',
-                    desc: 'মোবাইল, ট্যাবলেট, ল্যাপটপ বা প্রিন্ট—সবখানেই ঝকঝকে।',
+                    title: "যেকোনো ডিভাইসে পড়া",
+                    desc: "মোবাইল, ট্যাবলেট, ল্যাপটপ বা প্রিন্ট—সবখানেই ঝকঝকে।",
                   },
                 ].map((item, idx) => (
                   <div
@@ -911,7 +1000,9 @@ export default function App() {
                       <CheckCircle2 className="w-4 h-4 text-[#7C3AED] shrink-0" />
                       <span>{item.title}</span>
                     </div>
-                    <p className="text-xs text-[#6B5B95] leading-relaxed">{item.desc}</p>
+                    <p className="text-xs text-[#6B5B95] leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -944,28 +1035,30 @@ export default function App() {
                 আসল গল্প পড়ে দেখুন—যেকোনো ইংরেজি শব্দে ক্লিক করুন!
               </h2>
               <p className="text-sm sm:text-base text-[#5B4E7A] mt-2 max-w-2xl">
-                ইবুকের ভেতর গল্পগুলো ঠিক কীভাবে সাজানো আছে তা সরাসরি এখানেই যাচাই করুন। হাইলাইট করা যেকোনো শব্দে ক্লিক করলেই ডান পাশে অর্থ, মেমোরি হ্যাক ও উদাহরণ দেখতে পাবেন।
+                ইবুকের ভেতর গল্পগুলো ঠিক কীভাবে সাজানো আছে তা সরাসরি এখানেই
+                যাচাই করুন। হাইলাইট করা যেকোনো শব্দে ক্লিক করলেই ডান পাশে অর্থ,
+                মেমোরি হ্যাক ও উদাহরণ দেখতে পাবেন।
               </p>
             </div>
 
             {/* Mode Toggle */}
             <div className="inline-flex bg-white p-1.5 rounded-2xl border border-[#E7DEFF] shadow-sm self-start md:self-auto">
               <button
-                onClick={() => setStoryViewMode('interactive')}
+                onClick={() => setStoryViewMode("interactive")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                  storyViewMode === 'interactive'
-                    ? 'bg-gradient-to-r from-[#6D28D9] to-[#9333EA] text-white shadow'
-                    : 'text-[#5B4E7A] hover:text-[#6D28D9]'
+                  storyViewMode === "interactive"
+                    ? "bg-gradient-to-r from-[#6D28D9] to-[#9333EA] text-white shadow"
+                    : "text-[#5B4E7A] hover:text-[#6D28D9]"
                 }`}
               >
                 ইন্টারেক্টিভ গল্প
               </button>
               <button
-                onClick={() => setStoryViewMode('preview')}
+                onClick={() => setStoryViewMode("preview")}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
-                  storyViewMode === 'preview'
-                    ? 'bg-gradient-to-r from-[#9333EA] to-[#C026D3] text-white shadow'
-                    : 'text-[#5B4E7A] hover:text-[#9333EA]'
+                  storyViewMode === "preview"
+                    ? "bg-gradient-to-r from-[#9333EA] to-[#C026D3] text-white shadow"
+                    : "text-[#5B4E7A] hover:text-[#9333EA]"
                 }`}
               >
                 আসল ইবুক পেজ দেখুন
@@ -981,8 +1074,8 @@ export default function App() {
                 onClick={() => handleStorySwitch(idx)}
                 className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all ${
                   activeStoryIdx === idx
-                    ? 'bg-gradient-to-r from-[#7C3AED] to-[#9333EA] text-white border-transparent shadow-md shadow-purple-500/25'
-                    : 'bg-white text-[#3B0764] border-[#E7DEFF] hover:border-[#A855F7]'
+                    ? "bg-gradient-to-r from-[#7C3AED] to-[#9333EA] text-white border-transparent shadow-md shadow-purple-500/25"
+                    : "bg-white text-[#3B0764] border-[#E7DEFF] hover:border-[#A855F7]"
                 }`}
               >
                 <span>{story.number}:</span>
@@ -991,7 +1084,7 @@ export default function App() {
             ))}
           </div>
 
-          {storyViewMode === 'interactive' ? (
+          {storyViewMode === "interactive" ? (
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
               {/* Left: Story Reader Card */}
               <div className="lg:col-span-7 bg-gradient-to-br from-white to-[#FAF7FF] rounded-3xl p-6 sm:p-8 border border-[#E7DEFF] shadow-md">
@@ -1022,8 +1115,8 @@ export default function App() {
                         onClick={() => setSelectedWordKey(seg.word)}
                         className={`inline-flex items-center mx-1 px-2.5 py-0.5 rounded-lg font-extrabold text-sm sm:text-base tracking-wide transition-all cursor-pointer align-baseline ${
                           isSelected
-                            ? 'bg-gradient-to-r from-[#7C3AED] to-[#C026D3] text-[#FEF08A] ring-2 ring-[#FACC15] shadow-sm scale-[1.03]'
-                            : 'bg-[#F3E8FF] text-[#6D28D9] hover:bg-[#7C3AED] hover:text-white border border-[#DDD6FE]'
+                            ? "bg-gradient-to-r from-[#7C3AED] to-[#C026D3] text-[#FEF08A] ring-2 ring-[#FACC15] shadow-sm scale-[1.03]"
+                            : "bg-[#F3E8FF] text-[#6D28D9] hover:bg-[#7C3AED] hover:text-white border border-[#DDD6FE]"
                         }`}
                       >
                         {seg.word}
@@ -1043,8 +1136,8 @@ export default function App() {
                         onClick={() => setSelectedWordKey(w.word)}
                         className={`text-xs font-bold px-3 py-1.5 rounded-lg transition-all ${
                           activeWord.word === w.word
-                            ? 'bg-gradient-to-r from-[#5B21B6] to-[#7C3AED] text-white shadow'
-                            : 'bg-white text-[#4C1D95] border border-[#DDD6FE] hover:border-[#7C3AED]'
+                            ? "bg-gradient-to-r from-[#5B21B6] to-[#7C3AED] text-white shadow"
+                            : "bg-white text-[#4C1D95] border border-[#DDD6FE] hover:border-[#7C3AED]"
                         }`}
                       >
                         {w.word}
@@ -1132,7 +1225,9 @@ export default function App() {
                 <div className="mt-4 flex items-start gap-2.5 text-xs sm:text-sm text-[#4B3F6B] bg-[#F5F3FF] rounded-xl p-3.5 border border-[#E7DEFF]">
                   <CheckCircle2 className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-bold text-[#4C1D95]">কন্টেক্সট চেক: </span>
+                    <span className="font-bold text-[#4C1D95]">
+                      কন্টেক্সট চেক:{" "}
+                    </span>
                     {activeWord.context}
                   </div>
                 </div>
@@ -1158,16 +1253,22 @@ export default function App() {
                   পরিচ্ছন্ন টাইপোগ্রাফি, চোখের ওপর জিরো চাপ!
                 </h3>
                 <p className="text-sm sm:text-base text-[#4B3F6B] leading-relaxed">
-                  মোবাইল বা ল্যাপটপের স্ক্রিনে দীর্ঘক্ষণ পড়লেও যেন চোখ ব্যথা না করে, সেজন্য পুরো ইবুকটি ওয়ার্ম আইভরি কাগজের টোনে রিডিজাইন করা হয়েছে। প্রতিটি গল্পের পরই থাকছে গুছানো ভোকাবুলারি টেবিল এবং মেমোরি হ্যাক বক্স।
+                  মোবাইল বা ল্যাপটপের স্ক্রিনে দীর্ঘক্ষণ পড়লেও যেন চোখ ব্যথা না
+                  করে, সেজন্য পুরো ইবুকটি ওয়ার্ম আইভরি কাগজের টোনে রিডিজাইন করা
+                  হয়েছে। প্রতিটি গল্পের পরই থাকছে গুছানো ভোকাবুলারি টেবিল এবং
+                  মেমোরি হ্যাক বক্স।
                 </p>
                 <div className="space-y-2.5">
                   {[
-                    'প্রতিটি গল্পে বোল্ড ও কালার-কোডেড ইংরেজি শব্দ',
-                    'নিচেই টেবিল আকারে বাংলা অর্থ ও ইংরেজি বাক্য',
-                    'আলাদা ইউনিক এজ (Mnemonic + Synonym + Antonym) বক্স',
-                    'প্রিন্ট করে পড়ার জন্যও ১০০% উপযোগী লেআউট',
+                    "প্রতিটি গল্পে বোল্ড ও কালার-কোডেড ইংরেজি শব্দ",
+                    "নিচেই টেবিল আকারে বাংলা অর্থ ও ইংরেজি বাক্য",
+                    "আলাদা ইউনিক এজ (Mnemonic + Synonym + Antonym) বক্স",
+                    "প্রিন্ট করে পড়ার জন্যও ১০০% উপযোগী লেআউট",
                   ].map((pt, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-sm font-semibold text-[#2E1065]">
+                    <div
+                      key={i}
+                      className="flex items-center gap-2.5 text-sm font-semibold text-[#2E1065]"
+                    >
                       <CheckCircle2 className="w-4 h-4 text-[#7C3AED] shrink-0" />
                       <span>{pt}</span>
                     </div>
@@ -1201,7 +1302,8 @@ export default function App() {
               কার্ডে ক্লিক করে দেখুন—কীভাবে ১ সেকেন্ডে শব্দ মাথায় গেঁথে যায়!
             </h2>
             <p className="text-sm sm:text-base text-[#5B4E7A] mt-2">
-              কঠিন GRE শব্দগুলোকে মজার বাংলা ছন্দ ও সূত্র দিয়ে মনে রাখার কৌশল। নিচের কার্ডটিতে ক্লিক করে ফ্লিপ করুন।
+              কঠিন GRE শব্দগুলোকে মজার বাংলা ছন্দ ও সূত্র দিয়ে মনে রাখার কৌশল।
+              নিচের কার্ডটিতে ক্লিক করে ফ্লিপ করুন।
             </p>
           </div>
 
@@ -1221,15 +1323,15 @@ export default function App() {
               role="button"
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
+                if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
                   setIsFlipped(!isFlipped);
                 }
               }}
               className={`cursor-pointer rounded-3xl p-7 sm:p-9 min-h-[290px] flex flex-col justify-between transition-all duration-300 shadow-xl border-2 select-none ${
                 isFlipped
-                  ? 'bg-gradient-to-br from-[#5B21B6] via-[#7C3AED] to-[#9333EA] text-white border-[#FDE047]'
-                  : 'bg-gradient-to-br from-white to-[#FAF6FF] text-[#1F1B2E] border-[#DDD6FE] hover:border-[#A855F7]'
+                  ? "bg-gradient-to-br from-[#5B21B6] via-[#7C3AED] to-[#9333EA] text-white border-[#FDE047]"
+                  : "bg-gradient-to-br from-white to-[#FAF6FF] text-[#1F1B2E] border-[#DDD6FE] hover:border-[#A855F7]"
               }`}
             >
               {!isFlipped ? (
@@ -1287,12 +1389,20 @@ export default function App() {
 
                   <div className="grid grid-cols-2 gap-3 text-xs">
                     <div className="bg-white/15 rounded-xl px-3 py-2">
-                      <span className="text-[#A7F3D0] font-bold block">Synonyms</span>
-                      <span className="text-white/95">{currentCard.synonyms}</span>
+                      <span className="text-[#A7F3D0] font-bold block">
+                        Synonyms
+                      </span>
+                      <span className="text-white/95">
+                        {currentCard.synonyms}
+                      </span>
                     </div>
                     <div className="bg-white/15 rounded-xl px-3 py-2">
-                      <span className="text-[#FBCFE8] font-bold block">Antonyms</span>
-                      <span className="text-white/95">{currentCard.antonyms}</span>
+                      <span className="text-[#FBCFE8] font-bold block">
+                        Antonyms
+                      </span>
+                      <span className="text-white/95">
+                        {currentCard.antonyms}
+                      </span>
                     </div>
                   </div>
                 </>
@@ -1312,12 +1422,12 @@ export default function App() {
                 onClick={() => toggleMastered(currentCard.word)}
                 className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold border transition-all ${
                   masteredCards[currentCard.word]
-                    ? 'bg-[#059669] text-white border-[#059669]'
-                    : 'bg-white text-[#047857] border-[#A7F3D0] hover:bg-[#ECFDF5]'
+                    ? "bg-[#059669] text-white border-[#059669]"
+                    : "bg-white text-[#047857] border-[#A7F3D0] hover:bg-[#ECFDF5]"
                 }`}
               >
                 <CheckCircle2 className="w-4 h-4" />
-                {masteredCards[currentCard.word] ? 'আয়ত্ত হয়েছে!' : 'মনে থাকবে'}
+                {masteredCards[currentCard.word] ? "আয়ত্ত হয়েছে!" : "মনে থাকবে"}
               </button>
 
               <button
@@ -1351,24 +1461,24 @@ export default function App() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
             {[
               {
-                step: '০১',
-                title: 'রঙিন গল্পে ডুব দিন',
-                desc: 'প্রতিটি অধ্যায়ে আছে ছোট ও মজার বাংলা গল্প, যার ভেতরে স্বাভাবিকভাবেই বসানো আছে হাই-ফ্রিকোয়েন্সি শব্দ।',
+                step: "০১",
+                title: "রঙিন গল্পে ডুব দিন",
+                desc: "প্রতিটি অধ্যায়ে আছে ছোট ও মজার বাংলা গল্প, যার ভেতরে স্বাভাবিকভাবেই বসানো আছে হাই-ফ্রিকোয়েন্সি শব্দ।",
               },
               {
-                step: '০২',
-                title: 'তাৎক্ষণিক অর্থ ও বাক্য',
-                desc: 'গল্প শেষ হতেই পাচ্ছেন গোছানো ভোকাবুলারি টেবিল—ডিকশনারি ঘাঁটার কোনো ঝামেলা নেই।',
+                step: "০২",
+                title: "তাৎক্ষণিক অর্থ ও বাক্য",
+                desc: "গল্প শেষ হতেই পাচ্ছেন গোছানো ভোকাবুলারি টেবিল—ডিকশনারি ঘাঁটার কোনো ঝামেলা নেই।",
               },
               {
-                step: '০৩',
-                title: 'মেমোরি হ্যাকে স্থায়ী ছাপ',
-                desc: 'বাংলা ছন্দ ও কৌশলের মাধ্যমে কঠিন শব্দগুলো একবার পড়লেই মস্তিষ্কে দীর্ঘদিন গেঁথে থাকে।',
+                step: "০৩",
+                title: "মেমোরি হ্যাকে স্থায়ী ছাপ",
+                desc: "বাংলা ছন্দ ও কৌশলের মাধ্যমে কঠিন শব্দগুলো একবার পড়লেই মস্তিষ্কে দীর্ঘদিন গেঁথে থাকে।",
               },
               {
-                step: '০৪',
-                title: 'সিনোনিম ও রিভিশন',
-                desc: 'প্রতিটি শব্দের সমার্থক, বিপরীত শব্দ ও কন্টেক্সট চেক দিয়ে পরীক্ষার আগে দ্রুত রিভিশন করুন।',
+                step: "০৪",
+                title: "সিনোনিম ও রিভিশন",
+                desc: "প্রতিটি শব্দের সমার্থক, বিপরীত শব্দ ও কন্টেক্সট চেক দিয়ে পরীক্ষার আগে দ্রুত রিভিশন করুন।",
               },
             ].map((item) => (
               <div
@@ -1399,27 +1509,28 @@ export default function App() {
                   চোখের আরামের পার্থক্যটা নিজেই যাচাই করুন
                 </h3>
                 <p className="text-sm text-[#6B5B95] mt-1">
-                  বাটনে ক্লিক করে দেখুন সাধারণ কালো/অগোছালো পিডিএফ বনাম আমাদের নতুন আই-ফ্রেন্ডলি লাইট থিমের পার্থক্য।
+                  বাটনে ক্লিক করে দেখুন সাধারণ কালো/অগোছালো পিডিএফ বনাম আমাদের
+                  নতুন আই-ফ্রেন্ডলি লাইট থিমের পার্থক্য।
                 </p>
               </div>
               <div className="inline-flex bg-[#F3EEFF] p-1 rounded-xl self-start">
                 <button
-                  onClick={() => setReadingTheme('light')}
+                  onClick={() => setReadingTheme("light")}
                   className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
-                    readingTheme === 'light'
-                      ? 'bg-gradient-to-r from-[#059669] to-[#10B981] text-white shadow'
-                      : 'text-[#5B4E7A]'
+                    readingTheme === "light"
+                      ? "bg-gradient-to-r from-[#059669] to-[#10B981] text-white shadow"
+                      : "text-[#5B4E7A]"
                   }`}
                 >
                   <Sun className="w-3.5 h-3.5" />
                   নতুন আই-ফ্রেন্ডলি থিম
                 </button>
                 <button
-                  onClick={() => setReadingTheme('old')}
+                  onClick={() => setReadingTheme("old")}
                   className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-bold transition-all ${
-                    readingTheme === 'old'
-                      ? 'bg-[#1F1B2E] text-white shadow'
-                      : 'text-[#5B4E7A]'
+                    readingTheme === "old"
+                      ? "bg-[#1F1B2E] text-white shadow"
+                      : "text-[#5B4E7A]"
                   }`}
                 >
                   <Moon className="w-3.5 h-3.5" />
@@ -1428,7 +1539,7 @@ export default function App() {
               </div>
             </div>
 
-            {readingTheme === 'light' ? (
+            {readingTheme === "light" ? (
               <div className="rounded-2xl p-6 bg-[#FAF8F3] border-2 border-[#10B981]/40 transition-all">
                 <div className="flex items-center justify-between mb-3 flex-wrap gap-2">
                   <span className="text-xs font-extrabold text-[#047857] bg-[#ECFDF5] px-2.5 py-1 rounded-md">
@@ -1439,18 +1550,18 @@ export default function App() {
                   </span>
                 </div>
                 <p className="text-base leading-relaxed text-[#1F242B]">
-                  “নতুন পরিবেশে শুরুতে রাফি বেশ{' '}
+                  “নতুন পরিবেশে শুরুতে রাফি বেশ{" "}
                   <span className="font-extrabold text-[#7C3AED] bg-[#EDE9FE] px-1.5 py-0.5 rounded">
                     RETICENT
-                  </span>{' '}
-                  ছিল, তবে নিজের{' '}
+                  </span>{" "}
+                  ছিল, তবে নিজের{" "}
                   <span className="font-extrabold text-[#9333EA] bg-[#F3E8FF] px-1.5 py-0.5 rounded">
                     ACUMEN
-                  </span>{' '}
-                  কাজে লাগিয়ে সে দ্রুতই পরিস্থিতি{' '}
+                  </span>{" "}
+                  কাজে লাগিয়ে সে দ্রুতই পরিস্থিতি{" "}
                   <span className="font-extrabold text-[#C026D3] bg-[#FCE7F3] px-1.5 py-0.5 rounded">
                     AMELIORATE
-                  </span>{' '}
+                  </span>{" "}
                   করে ফেলল।”
                 </p>
               </div>
@@ -1465,7 +1576,9 @@ export default function App() {
                   </span>
                 </div>
                 <p className="text-sm leading-snug text-gray-400 font-mono">
-                  1. RETICENT = reserved, quiet. 2. ACUMEN = sharpness of mind. 3. AMELIORATE = make better. (কোনো গল্প নেই, মেমোরি হ্যাক নেই—৫ মিনিট পড়লেই ঘুম পায়!)
+                  1. RETICENT = reserved, quiet. 2. ACUMEN = sharpness of mind.
+                  3. AMELIORATE = make better. (কোনো গল্প নেই, মেমোরি হ্যাক
+                  নেই—৫ মিনিট পড়লেই ঘুম পায়!)
                 </p>
               </div>
             )}
@@ -1479,11 +1592,11 @@ export default function App() {
           <div className="relative rounded-[32px] bg-gradient-to-br from-[#5B21B6] via-[#7C3AED] to-[#A855F7] text-white p-6 sm:p-11 shadow-2xl shadow-purple-700/25 overflow-hidden">
             <div
               className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full opacity-30 blur-3xl"
-              style={{ backgroundColor: '#FDE047' }}
+              style={{ backgroundColor: "#FDE047" }}
             />
             <div
               className="pointer-events-none absolute -bottom-24 -left-16 w-64 h-64 rounded-full opacity-25 blur-3xl"
-              style={{ backgroundColor: '#F472B6' }}
+              style={{ backgroundColor: "#F472B6" }}
             />
 
             <div className="relative text-center max-w-2xl mx-auto mb-8 space-y-3">
@@ -1492,11 +1605,15 @@ export default function App() {
                 সীমিত সময়ের জন্য ৫০% ডিসকাউন্ট ও মেগা বান্ডেল অফার!
               </span>
               <h2 className="text-2xl sm:text-4xl font-extrabold leading-tight">
-                পছন্দের প্যাক বেছে নিন —{' '}
-                <span className="text-[#FEF08A]">গল্পে শিখি Vocabulary! প্রো</span>
+                পছন্দের প্যাক বেছে নিন —{" "}
+                <span className="text-[#FEF08A]">
+                  গল্পে শিখি Vocabulary! প্রো
+                </span>
               </h2>
               <p className="text-sm sm:text-base text-white/90">
-                প্রতিটি গল্পে জিবলি-স্টাইল ছবি, ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF, ৪,১৬৬+ UK/US অডিও লিংক এবং বান্ডেলে পাচ্ছেন ১,৮৭৭ শব্দের ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড!
+                প্রতিটি গল্পে জিবলি-স্টাইল ছবি, ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF,
+                ৪,১৬৬+ UK/US অডিও লিংক এবং বান্ডেলে পাচ্ছেন ১,৮৭৭ শব্দের
+                ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড!
               </p>
             </div>
 
@@ -1514,8 +1631,12 @@ export default function App() {
 
                   <div className="my-5 text-center bg-[#FAF8FF] rounded-2xl p-4 border border-[#E7DEFF]">
                     <div className="flex items-baseline justify-center gap-3">
-                      <span className="text-lg font-bold text-[#8B7FA8] line-through">২০০৳</span>
-                      <span className="text-4xl sm:text-5xl font-black text-[#6D28D9] tracking-tight">১০০৳</span>
+                      <span className="text-lg font-bold text-[#8B7FA8] line-through">
+                        ২০০৳
+                      </span>
+                      <span className="text-4xl sm:text-5xl font-black text-[#6D28D9] tracking-tight">
+                        ১০০৳
+                      </span>
                     </div>
                     <p className="text-xs font-semibold text-[#6B5B95] mt-1">
                       একবার পেমেন্টে লাইফটাইম PDF অ্যাক্সেস
@@ -1524,11 +1645,11 @@ export default function App() {
 
                   <ul className="space-y-2.5 text-sm font-medium text-[#3B2F5C] mb-6">
                     {[
-                      '১০০টি সম্পূর্ণ গল্প + ১০০টি জিবলি-স্টাইল ছবি',
-                      'ডে (লাইট) + নাইট (ডার্ক) দুটি ৩৫৭ পৃষ্ঠার PDF',
-                      '৪,১৬৬+ ক্লিকেবল UK ও US অডিও লিংক',
-                      '১০টি কুইজ, ৫০ কনফিউজিং ওয়ার্ড ও ৩০ রুট ম্যাপ',
-                      '৩০ দিনের রোডম্যাপ, টপিক ক্লাস্টার ও A–Z ইনডেক্স',
+                      "১০০টি সম্পূর্ণ গল্প + ১০০টি জিবলি-স্টাইল ছবি",
+                      "ডে (লাইট) + নাইট (ডার্ক) দুটি ৩৫৭ পৃষ্ঠার PDF",
+                      "৪,১৬৬+ ক্লিকেবল UK ও US অডিও লিংক",
+                      "১০টি কুইজ, ৫০ কনফিউজিং ওয়ার্ড ও ৩০ রুট ম্যাপ",
+                      "৩০ দিনের রোডম্যাপ, টপিক ক্লাস্টার ও A–Z ইনডেক্স",
                     ].map((feat, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-[#7C3AED] shrink-0 mt-0.5" />
@@ -1540,7 +1661,7 @@ export default function App() {
 
                 <button
                   type="button"
-                  onClick={() => openOrderModal('ebook')}
+                  onClick={() => openOrderModal("ebook")}
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#EDE9FE] hover:bg-[#DDD6FE] text-[#4C1D95] font-extrabold text-base px-6 py-3.5 rounded-2xl transition-all"
                 >
                   প্রো ইবুক নিন — ১০০৳
@@ -1572,7 +1693,9 @@ export default function App() {
 
                   <div className="my-5 text-center bg-gradient-to-br from-[#FAF8FF] to-[#FEF9C3]/60 rounded-2xl p-4 border border-[#FDE047]">
                     <div className="flex items-baseline justify-center gap-3">
-                      <span className="text-xl font-bold text-[#8B7FA8] line-through">৩০০৳</span>
+                      <span className="text-xl font-bold text-[#8B7FA8] line-through">
+                        ৩০০৳
+                      </span>
                       <span className="text-5xl font-black bg-gradient-to-r from-[#6D28D9] to-[#C026D3] bg-clip-text text-transparent tracking-tight">
                         ১৫০৳
                       </span>
@@ -1584,11 +1707,11 @@ export default function App() {
 
                   <ul className="space-y-2.5 text-sm font-semibold text-[#2E1065] mb-4">
                     {[
-                      'প্রো ইবুকের সবকিছু (ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF)',
-                      'ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (১,৮৭৭ শব্দ)',
-                      'ফ্ল্যাশকার্ডে অফলাইন UK, US, ধীরে ও উদাহরণ অডিও',
-                      'নাইট মোড, গল্প ১–১০০ ফিল্টার ও মুখস্থ ট্র্যাকার',
-                      'বোনাস: Anki ফ্ল্যাশকার্ড ডেক ও অডিও সেটআপ গাইড',
+                      "প্রো ইবুকের সবকিছু (ডে + নাইট দুটি ৩৫৭ পৃষ্ঠার PDF)",
+                      "ইন্টারঅ্যাক্টিভ ৩ডি ফ্ল্যাশকার্ড অ্যাপ (১,৮৭৭ শব্দ)",
+                      "ফ্ল্যাশকার্ডে অফলাইন UK, US, ধীরে ও উদাহরণ অডিও",
+                      "নাইট মোড, গল্প ১–১০০ ফিল্টার ও মুখস্থ ট্র্যাকার",
+                      "বোনাস: Anki ফ্ল্যাশকার্ড ডেক ও অডিও সেটআপ গাইড",
                     ].map((feat, i) => (
                       <li key={i} className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 text-[#059669] shrink-0 mt-0.5" />
@@ -1598,14 +1721,15 @@ export default function App() {
                   </ul>
 
                   <p className="text-[11px] font-bold text-[#B45309] bg-[#FFFBEB] border border-[#FDE68A] rounded-xl px-3 py-2 mb-5">
-                    * বিঃদ্রঃ ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না — কেবল ১৫০৳-এর এই বান্ডেল অফারেই প্রো ইবুকের সাথে পাবেন।
+                    * বিঃদ্রঃ ফ্ল্যাশকার্ড আলাদাভাবে বিক্রি হয় না — কেবল ১৫০৳-এর
+                    এই বান্ডেল অফারেই প্রো ইবুকের সাথে পাবেন।
                   </p>
                 </div>
 
                 <div>
                   <button
                     type="button"
-                    onClick={() => openOrderModal('bundle')}
+                    onClick={() => openOrderModal("bundle")}
                     className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#7C3AED] via-[#9333EA] to-[#C026D3] hover:brightness-110 text-white font-extrabold text-base px-6 py-4 rounded-2xl shadow-lg shadow-purple-500/30 transition-all hover:-translate-y-0.5"
                   >
                     <Sparkles className="w-5 h-5 text-[#FDE047]" />
@@ -1696,19 +1820,19 @@ export default function App() {
 
           <div className="flex flex-wrap items-center justify-center gap-5 text-xs font-semibold">
             <button
-              onClick={() => scrollToSection('promo-video')}
+              onClick={() => scrollToSection("promo-video")}
               className="hover:text-[#FDE047] transition-colors"
             >
               প্রোমো ভিডিও
             </button>
             <button
-              onClick={() => scrollToSection('sample-story')}
+              onClick={() => scrollToSection("sample-story")}
               className="hover:text-[#FDE047] transition-colors"
             >
               নমুনা গল্প
             </button>
             <button
-              onClick={() => scrollToSection('memory-hacks')}
+              onClick={() => scrollToSection("memory-hacks")}
               className="hover:text-[#FDE047] transition-colors"
             >
               মেমোরি হ্যাক
@@ -1750,7 +1874,9 @@ export default function App() {
               />
               <div>
                 <span className="inline-flex items-center gap-1 text-[11px] font-extrabold bg-[#F3E8FF] text-[#7C3AED] px-2.5 py-0.5 rounded-full">
-                  {selectedPlan === 'bundle' ? 'মেগা বান্ডেল • ৫০% ছাড় (১৫০৳)' : '৫০% ডিসকাউন্ট • মাত্র ১০০৳'}
+                  {selectedPlan === "bundle"
+                    ? "মেগা বান্ডেল • ৫০% ছাড় (১৫০৳)"
+                    : "৫০% ডিসকাউন্ট • মাত্র ১০০৳"}
                 </span>
                 <h3 className="text-lg font-extrabold text-[#2E1065] mt-0.5">
                   বিকাশে অর্ডার সম্পন্ন করুন
@@ -1761,22 +1887,22 @@ export default function App() {
             <div className="grid grid-cols-2 gap-2 mb-3">
               <button
                 type="button"
-                onClick={() => setSelectedPlan('ebook')}
+                onClick={() => setSelectedPlan("ebook")}
                 className={`py-2 px-3 rounded-xl text-xs font-extrabold border transition-all ${
-                  selectedPlan === 'ebook'
-                    ? 'bg-[#6D28D9] text-white border-[#6D28D9]'
-                    : 'bg-white text-[#4C1D95] border-[#DDD6FE]'
+                  selectedPlan === "ebook"
+                    ? "bg-[#6D28D9] text-white border-[#6D28D9]"
+                    : "bg-white text-[#4C1D95] border-[#DDD6FE]"
                 }`}
               >
                 শুধু প্রো ইবুক (১০০৳)
               </button>
               <button
                 type="button"
-                onClick={() => setSelectedPlan('bundle')}
+                onClick={() => setSelectedPlan("bundle")}
                 className={`py-2 px-3 rounded-xl text-xs font-extrabold border transition-all ${
-                  selectedPlan === 'bundle'
-                    ? 'bg-gradient-to-r from-[#7C3AED] to-[#C026D3] text-white border-[#A855F7]'
-                    : 'bg-white text-[#4C1D95] border-[#DDD6FE]'
+                  selectedPlan === "bundle"
+                    ? "bg-gradient-to-r from-[#7C3AED] to-[#C026D3] text-white border-[#A855F7]"
+                    : "bg-white text-[#4C1D95] border-[#DDD6FE]"
                 }`}
               >
                 🔥 ইবুক + ফ্ল্যাশকার্ড (১৫০৳)
@@ -1786,22 +1912,22 @@ export default function App() {
             <div className="flex items-center justify-between bg-gradient-to-r from-[#F5F0FF] to-[#FDF2F8] border border-[#DDD6FE] rounded-2xl px-4 py-3 mb-4">
               <div>
                 <p className="text-xs font-bold text-[#6B5B95]">
-                  {selectedPlan === 'bundle'
-                    ? 'প্রো ইবুক (ডে+নাইট) + ৩ডি ফ্ল্যাশকার্ড বান্ডেল'
-                    : 'গল্পে শিখি Vocabulary! প্রো (ডে+নাইট PDF)'}
+                  {selectedPlan === "bundle"
+                    ? "প্রো ইবুক (ডে+নাইট) + ৩ডি ফ্ল্যাশকার্ড বান্ডেল"
+                    : "গল্পে শিখি Vocabulary! প্রো (ডে+নাইট PDF)"}
                 </p>
                 <p className="text-[11px] text-[#7C3AED] font-semibold">
-                  {selectedPlan === 'bundle'
-                    ? '৩৫৭ পৃষ্ঠার ২টি PDF + ১,৮৭৭ শব্দের ফ্ল্যাশকার্ড + Anki'
-                    : '১০০ গল্প • ১০০ জিবলি ছবি • ৩৫৭ পৃষ্ঠা'}
+                  {selectedPlan === "bundle"
+                    ? "৩৫৭ পৃষ্ঠার ২টি PDF + ১,৮৭৭ শব্দের ফ্ল্যাশকার্ড + Anki"
+                    : "১০০ গল্প • ১০০ জিবলি ছবি • ৩৫৭ পৃষ্ঠা"}
                 </p>
               </div>
               <div className="text-right">
                 <span className="text-xs text-[#8B7FA8] line-through block">
-                  {selectedPlan === 'bundle' ? '৩০০৳' : '২০০৳'}
+                  {selectedPlan === "bundle" ? "৩০০৳" : "২০০৳"}
                 </span>
                 <span className="text-xl font-black text-[#6D28D9]">
-                  {selectedPlan === 'bundle' ? '১৫০৳' : '১০০৳'}
+                  {selectedPlan === "bundle" ? "১৫০৳" : "১০০৳"}
                 </span>
               </div>
             </div>
@@ -1814,7 +1940,7 @@ export default function App() {
                   বিকাশ নম্বর (bKash Send Money)
                 </span>
                 <span className="text-[11px] font-extrabold bg-white text-[#BE185D] px-2 py-0.5 rounded-md border border-[#FBCFE8]">
-                  {selectedPlan === 'bundle' ? '১৫০৳ পাঠান' : '১০০৳ পাঠান'}
+                  {selectedPlan === "bundle" ? "১৫০৳ পাঠান" : "১০০৳ পাঠান"}
                 </span>
               </div>
 
@@ -1824,14 +1950,14 @@ export default function App() {
                 </span>
                 <button
                   type="button"
-                  onClick={() => handleCopy(CONTACT.bkashNumber, 'bkash')}
+                  onClick={() => handleCopy(CONTACT.bkashNumber, "bkash")}
                   className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-extrabold transition-all shrink-0 ${
-                    copiedField === 'bkash'
-                      ? 'bg-[#059669] text-white'
-                      : 'bg-gradient-to-r from-[#DB2777] to-[#E11D48] hover:brightness-110 text-white shadow-sm'
+                    copiedField === "bkash"
+                      ? "bg-[#059669] text-white"
+                      : "bg-gradient-to-r from-[#DB2777] to-[#E11D48] hover:brightness-110 text-white shadow-sm"
                   }`}
                 >
-                  {copiedField === 'bkash' ? (
+                  {copiedField === "bkash" ? (
                     <>
                       <Check className="w-3.5 h-3.5" />
                       কপি হয়েছে!
@@ -1857,8 +1983,11 @@ export default function App() {
                     ১
                   </span>
                   <span>
-                    উপরের বিকাশ নম্বরটি কপি করে আপনার বিকাশ অ্যাপ থেকে{' '}
-                    <strong className="text-[#2E1065]">{selectedPlan === 'bundle' ? '১৫০৳' : '১০০৳'} Send Money</strong> করুন।
+                    উপরের বিকাশ নম্বরটি কপি করে আপনার বিকাশ অ্যাপ থেকে{" "}
+                    <strong className="text-[#2E1065]">
+                      {selectedPlan === "bundle" ? "১৫০৳" : "১০০৳"} Send Money
+                    </strong>{" "}
+                    করুন।
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -1866,8 +1995,12 @@ export default function App() {
                     ২
                   </span>
                   <span>
-                    পেমেন্টের <strong className="text-[#2E1065]">বিকাশ ট্রানজেকশন আইডি (TrxID)</strong> অথবা{' '}
-                    <strong className="text-[#2E1065]">স্ক্রিনশট</strong> নিচের হোয়াটসঅ্যাপ নম্বরে পাঠিয়ে দিন।
+                    পেমেন্টের{" "}
+                    <strong className="text-[#2E1065]">
+                      বিকাশ ট্রানজেকশন আইডি (TrxID)
+                    </strong>{" "}
+                    অথবা <strong className="text-[#2E1065]">স্ক্রিনশট</strong>{" "}
+                    নিচের হোয়াটসঅ্যাপ নম্বরে পাঠিয়ে দিন।
                   </span>
                 </li>
                 <li className="flex items-start gap-2.5">
@@ -1875,8 +2008,13 @@ export default function App() {
                     ৩
                   </span>
                   <span>
-                    যাচাই করার সাথে সাথেই হোয়াটসঅ্যাপে আপনার{' '}
-                    <strong className="text-[#2E1065]">{selectedPlan === 'bundle' ? 'ডে + নাইট প্রো PDF ও ৩ডি ফ্ল্যাশকার্ড বান্ডেল' : '৩৫৭ পৃষ্ঠার ডে + নাইট প্রো PDF ইবুক'}</strong> পাঠিয়ে দেওয়া হবে।
+                    যাচাই করার সাথে সাথেই হোয়াটসঅ্যাপে আপনার{" "}
+                    <strong className="text-[#2E1065]">
+                      {selectedPlan === "bundle"
+                        ? "ডে + নাইট প্রো PDF ও ৩ডি ফ্ল্যাশকার্ড বান্ডেল"
+                        : "৩৫৭ পৃষ্ঠার ডে + নাইট প্রো PDF ইবুক"}
+                    </strong>{" "}
+                    পাঠিয়ে দেওয়া হবে।
                   </span>
                 </li>
               </ol>
@@ -1893,15 +2031,19 @@ export default function App() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => handleCopy(CONTACT.whatsappNumber, 'whatsapp')}
+                  onClick={() => handleCopy(CONTACT.whatsappNumber, "whatsapp")}
                   className="text-[11px] font-bold text-[#047857] bg-white px-2.5 py-1 rounded-lg border border-[#A7F3D0] hover:bg-[#ECFDF5]"
                 >
-                  {copiedField === 'whatsapp' ? 'কপি হয়েছে!' : 'কপি'}
+                  {copiedField === "whatsapp" ? "কপি হয়েছে!" : "কপি"}
                 </button>
               </div>
 
               <a
-                href={selectedPlan === 'bundle' ? CONTACT.whatsappBundleLink : CONTACT.whatsappLink}
+                href={
+                  selectedPlan === "bundle"
+                    ? CONTACT.whatsappBundleLink
+                    : CONTACT.whatsappLink
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#059669] to-[#10B981] hover:brightness-105 text-white font-extrabold text-sm py-3.5 px-4 rounded-xl shadow-md shadow-emerald-500/20 transition-all"
